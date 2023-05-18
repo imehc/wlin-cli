@@ -1,0 +1,30 @@
+{
+  "name": "wlin-cli",
+  "version": "0.0.2",
+  "description": "",
+  "bin": {
+    "wlin-cli": "./bin/index.js"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "keywords": [],
+  "author": "wlin",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "4.0.0",
+    "commander": "^9.5.0",
+    "download-git-repo": "3.0.2",
+    "fs-extra": "11.1.0",
+    "inquirer": "8.0.0",
+    "log-symbols": "4.0.0",
+    "ora": "5.0.0",
+    "path": "0.12.7",
+    "update-notifier": "4.0.0"
+  }
+}
