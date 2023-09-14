@@ -1,6 +1,6 @@
 {
   "name": "wlin-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "bin": {
     "wlin-cli": "./bin/index.js"
