@@ -1,4 +1,4 @@
-# Start
+## Usage
 ```shell
-npx wlin-cli your-project-name
+npx wlin-cli create [your-project-name]
 ```
