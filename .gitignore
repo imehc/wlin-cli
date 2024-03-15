@@ -1,4 +1,8 @@
 # node 
 node_modules
 
+# build
+dist
+
+# macos
 .DS_Store
