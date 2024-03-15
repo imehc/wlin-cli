@@ -15,7 +15,7 @@ const updateChk = require('../lib/update')
 // upgrade 检测更新
 program
     .command('upgrade')
-    .description("Check the mtt-cli version.")
+    .description("Check the wlin-cli version.")
     .action(() => {
       updateChk()
     });
