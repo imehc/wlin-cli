@@ -21,8 +21,8 @@ dependencies:
     specifier: ^3.0.14
     version: 3.0.14
   '@oclif/plugin-plugins':
-    specifier: ^4.3.6
-    version: 4.3.6
+    specifier: ^4.3.7
+    version: 4.3.7
   '@oclif/plugin-update':
     specifier: ^4.2.0
     version: 4.2.0
@@ -1236,8 +1236,8 @@ packages:
       chalk: 5.3.0
       fast-levenshtein: 3.0.0
 
-  /@oclif/plugin-plugins@4.3.6:
-    resolution: {integrity: sha512-a8GPZBnoVCBjlCEPgp8R93S9HyxSlGnoCvb6NIhqpVe4bk4DhxB9TongCWWaBvdUqovTbhgOfwxRB06oSe2plA==}
+  /@oclif/plugin-plugins@4.3.7:
+    resolution: {integrity: sha512-G41UFPPpu0QbXfOiY8V9qGsTYRzmqC3OaidJZji6kuoJauzUQICRfx18C01/qP5nONE1in4QJAsRQhauvMXg6g==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@oclif/core': 3.25.2
@@ -4217,7 +4217,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 5.0.1
+      minimatch: 5.1.6
       once: 1.4.0
     dev: true
 
