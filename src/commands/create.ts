@@ -30,7 +30,7 @@ export default class Create extends Command {
 
   public async run(): Promise<void> {
     const config = await this.initConfig()
-    this.log(`the template is: ${config.template}, name: ${config.name}, targetDir: ${config.targetDir}`)
+    // this.log(`the template is: ${config.template}, name: ${config.name}, targetDir: ${config.targetDir}`)
     this.createProject(config)
   }
 
