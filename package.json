@@ -5,9 +5,9 @@
   "keywords": [
     "oclif"
   ],
-  "homepage": "https://github.com/https://github.com/imehc/wlin-cli/imehc",
-  "bugs": "https://github.com/https://github.com/imehc/wlin-cli/imehc/issues",
-  "repository": "https://github.com/imehc/wlin-cli/imehc",
+  "homepage": "https://github.com/imehc/wlin-cli",
+  "bugs": "https://github.com/imehc/wlin-cli/issues",
+  "repository": "https://github.com/imehc/wlin-cli",
   "license": "MIT",
   "author": "imehc",
   "type": "module",
