@@ -1,6 +1,6 @@
 {
   "name": "wlin-cli",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Quickly create common templates",
   "keywords": [
     "oclif"
@@ -87,6 +87,7 @@
     "eslint-config-prettier": "^9.1.0",
     "mocha": "^10",
     "oclif": "^4.5.4",
+    "rimraf": "^5.0.5",
     "shx": "^0.3.4",
     "ts-node": "^10.9.2",
     "typescript": "^5"

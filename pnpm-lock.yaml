@@ -97,6 +97,9 @@ devDependencies:
   oclif:
     specifier: ^4.5.4
     version: 4.5.7
+  rimraf:
+    specifier: ^5.0.5
+    version: 5.0.5
   shx:
     specifier: ^0.3.4
     version: 0.3.4
@@ -6510,6 +6513,14 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
+    dev: true
+
+  /rimraf@5.0.5:
+    resolution: {integrity: sha512-CqDakW+hMe/Bz202FPEymy68P+G50RfMQK+Qo5YUqc9SPipvbGjCGKd0RSKEelbsfQuw3g5NZDSrlZZAJurH1A==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dependencies:
+      glob: 10.3.10
     dev: true
 
   /run-async@2.4.1:

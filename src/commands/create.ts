@@ -6,6 +6,7 @@ import {exec} from 'node:child_process'
 import path from 'node:path'
 import notifier from 'node-notifier'
 import ora from 'ora'
+import {rimraf} from 'rimraf'
 import {CleanOptions, SimpleGit, simpleGit} from 'simple-git'
 
 const templates = ['react-ts', 'vue-ts'] as const
@@ -51,6 +52,7 @@ export default class Create extends Command {
     try {
       initSpinner.text = chalk.green('Download template\n')
       await this.downloadTemplate({targetDir, template})
+      await rimraf(`${targetDir}/.git`).catch(() => {})
       exec(`cd ${targetDir} && npm pkg set name="${name}"`, (error) => {
         if (error) {
           initSpinner.text = chalk.red(error)
@@ -70,18 +72,9 @@ export default class Create extends Command {
   }
 
   private async downloadTemplate({targetDir, template}: Pick<BaseConfig, 'targetDir' | 'template'>): Promise<void> {
-    const remoteUrl = [
-      {
-        name: 'react-ts',
-        url: 'git@github.com:imehc/basic-template.git',
-      },
-      {
-        name: 'vue-ts',
-        url: 'git@github.com:imehc/template-vue.git',
-      },
-    ].find((item) => item.name === template)!.url
+    const basicRemoteUrl = 'git@github.com:imehc/fronted-template.git'
     const git: SimpleGit = simpleGit().clean(CleanOptions.FORCE)
-    await git.clone(remoteUrl, targetDir)
+    await git.clone(basicRemoteUrl, targetDir, ['--branch', template])
   }
 
   private async initConfig(): Promise<BaseConfig> {
