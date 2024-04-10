@@ -74,6 +74,7 @@ export default class Create extends Command {
   private async downloadTemplate({targetDir, template}: Pick<BaseConfig, 'targetDir' | 'template'>): Promise<void> {
     const basicRemoteUrl = 'git@github.com:imehc/fronted-template.git'
     const git: SimpleGit = simpleGit().clean(CleanOptions.FORCE)
+    await git.init()
     await git.clone(basicRemoteUrl, targetDir, ['--branch', template])
   }
 
