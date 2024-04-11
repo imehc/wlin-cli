@@ -8,27 +8,27 @@ import 'zx/globals'
 // const fs = require('fs');
 // const path = require('path');
 
-async function publish(type, branch) {
+async function upgradeVersion(type) {
   // https://www.jianshu.com/p/5565536a1f82
   try {
     switch (type) {
       // 主要
       case "1":
       case "major": {
-        await $`npm version major`;
+        await $`npm version major --message "v%s"`;
         break;
       }
 
       // 次要
       case "2":
       case "minor": {
-        await $`npm version minor`;
+        await $`npm version minor --message "v%s"`;
         break;
       }
 
       // 补丁
       default: {
-        await $`npm version patch`;
+        await $`npm version patch --message "v%s"`;
         break;
       }
     }
@@ -39,6 +39,9 @@ async function publish(type, branch) {
     exit(1);
   }
 
+}
+
+async function pushRemoteBranch() {
   try {
     if (branch) {
       await $`git push origin ${branch}`;
@@ -47,24 +50,25 @@ async function publish(type, branch) {
 
     await $`git push origin main`;
   } catch (error) {
-    console.error(error);
+    console.error(error.stderr);
   }
 }
 
 const args = process.argv.slice(2);
 switch (args.length) {
   case 2: {
-    await publish(args[1]);
+    await upgradeVersion(args[1]);
     break;
   }
 
   case 3: {
-    await publish(args[1], args[2]);
+    await upgradeVersion(args[1]);
+    await pushRemoteBranch(args[2]);
     break;
   }
 
   default: {
-    await publish()
+    await upgradeVersion()
   }
 }
 
