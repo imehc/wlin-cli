@@ -1,6 +1,6 @@
 {
   "name": "wlin-cli",
-  "version": "0.2.6",
+  "version": "0.2.10",
   "description": "Quickly create common templates",
   "keywords": [
     "oclif"
@@ -23,14 +23,15 @@
     "/oclif.manifest.json"
   ],
   "scripts": {
-    "build": "shx rm -rf dist && tsc -b",
+    "build": "shx rm -rf dist && tsc -b && javascript-obfuscator dist/commands/create.js --output dist/commands/create.js",
     "lint": "eslint . --ext .ts",
     "prepack": "npm run build && oclif manifest && oclif readme",
     "postpack": "shx rm -f oclif.manifest.json",
     "prepare": "npm run build",
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",
     "posttest": "npm run lint",
-    "version": "oclif readme && git add README.md"
+    "version": "oclif readme && git add README.md",
+    "pub": "zx publish.mjs"
   },
   "oclif": {
     "bin": "wlin-cli",
@@ -60,16 +61,16 @@
     "@oclif/plugin-commands": "^3.2.0",
     "@oclif/plugin-help": "^6",
     "@oclif/plugin-not-found": "^3.0.14",
-    "@oclif/plugin-plugins": "^4.3.6",
+    "@oclif/plugin-plugins": "^5",
     "@oclif/plugin-update": "^4.2.0",
     "@oclif/plugin-warn-if-update-available": "^3.0.14",
     "@oclif/plugin-which": "^3.1.5",
     "chalk": "^5.3.0",
     "fs-extra": "^11.2.0",
-    "inquirer": "^9.2.16",
+    "inquirer": "^9.2.17",
     "node-notifier": "^10.0.1",
     "ora": "^8.0.1",
-    "simple-git": "^3.23.0"
+    "simple-git": "^3.24.0"
   },
   "devDependencies": {
     "@oclif/prettier-config": "^0.2.1",
@@ -85,12 +86,14 @@
     "eslint-config-oclif": "^5",
     "eslint-config-oclif-typescript": "^3",
     "eslint-config-prettier": "^9.1.0",
+    "javascript-obfuscator": "^4.1.0",
     "mocha": "^10",
-    "oclif": "^4.5.4",
+    "oclif": "^4.7.6",
     "rimraf": "^5.0.5",
     "shx": "^0.3.4",
     "ts-node": "^10.9.2",
-    "typescript": "^5"
+    "typescript": "^5",
+    "zx": "^8.0.1"
   },
   "engines": {
     "node": ">=18.0.0"
