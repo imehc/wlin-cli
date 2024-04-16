@@ -1,0 +1,23 @@
+https://www.npmjs.com/package/boxen 在终端中创建框
+https://www.npmjs.com/package/chalk 美化输出终端
+https://www.npmjs.com/package/clear 清屏
+https://www.npmjs.com/package/clui 绘制命令行表、仪表和微调器
+https://www.npmjs.com/package/figlet 从文本创建 ASCII 艺术
+https://www.npmjs.com/package/inquirer 创建交互式命令行用户界面
+https://www.npmjs.com/package/minimist 解析参数选项
+https://www.npmjs.com/package/configstore 轻松加载和保存配置，无需考虑位置和方式
+https://www.npmjs.com/package/yargs 处理命令行参数
+https://www.npmjs.com/package/node-emoji emoji图标
+https://www.npmjs.com/package/recursive-readdir 递归读文件的目录以及子目录
+https://www.npmjs.com/package/ncp 递归拷贝文件
+https://www.npmjs.com/package/easy-table 绘制数据表格
+https://www.npmjs.com/package/prompts 跟inquirer差不多
+更多 https://zhuanlan.zhihu.com/p/552739919
+
+TODO: 待实现清单
+https://superface.ai/blog/npm-publish-gh-actions-changelog
+https://docs.npmjs.com/cli/v8/commands/npm-version
+✔️  1.根据提交前缀[<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git]自动来判断是否触发CI/CD
+✔️  2.更新package.json版本号并发布到npm,更新版本号可根据提交前缀来更新合适的版本号，在合适的时候自动tag标签
+✖️  3.如果发布到npm成功，聚合上次发布到这次之间的commit内容到CHANGELOG.md,并通过PR合并到主分支
+✖️  4.文本艺术字体在执行cli时也显示

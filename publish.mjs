@@ -15,25 +15,25 @@ async function upgradeVersion(type) {
       // 主要
       case "1":
       case "major": {
-        await $`npm version major --message "v%s"`;
+        await $`npm version major --message "chore: release v%s"`;
         break;
       }
 
       // 次要
       case "2":
       case "minor": {
-        await $`npm version minor --message "v%s"`;
+        await $`npm version minor --message "chore: release v%s"`;
         break;
       }
 
       // 补丁
       default: {
-        await $`npm version patch --message "v%s"`;
+        await $`npm version patch --message "chore: release v%s"`;
         break;
       }
     }
 
-    await $`npx oclif readme`;
+    await $`pnpm run version`;
   } catch (error) {
     console.error(error.stderr);
     exit(1);

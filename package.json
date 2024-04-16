@@ -1,9 +1,10 @@
 {
   "name": "wlin-cli",
-  "version": "0.3.0",
+  "version": "0.3.4",
   "description": "Quickly create common templates",
   "keywords": [
-    "oclif"
+    "oclif",
+    "wlin"
   ],
   "homepage": "https://github.com/imehc/wlin-cli",
   "bugs": "https://github.com/imehc/wlin-cli/issues",
@@ -23,14 +24,15 @@
     "/oclif.manifest.json"
   ],
   "scripts": {
-    "build": "shx rm -rf dist && tsc -b && javascript-obfuscator dist/commands/create.js --output dist/commands/create.js",
+    "build": "shx rm -rf dist && tsc -b",
+    "build:obfuscator": "pnpm run build && javascript-obfuscator dist/commands/create.js --output dist/commands/create.js",
     "lint": "eslint . --ext .ts",
-    "prepack": "npm run build && oclif manifest && oclif readme",
+    "prepack": "npm run build && npx oclif manifest && npx oclif readme",
     "postpack": "shx rm -f oclif.manifest.json",
     "prepare": "npm run build",
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",
     "posttest": "npm run lint",
-    "version": "oclif readme && git add README.md",
+    "version": "npx oclif readme && git add README.md",
     "pub": "zx publish.mjs"
   },
   "oclif": {
@@ -39,14 +41,12 @@
     "dirname": "wlin-cli",
     "plugins": [
       "@oclif/plugin-help",
-      "@oclif/plugin-plugins",
       "@oclif/plugin-not-found",
       "@oclif/plugin-update",
       "@oclif/plugin-warn-if-update-available",
       "@oclif/plugin-commands",
       "@oclif/plugin-autocomplete",
-      "@oclif/plugin-plugins",
-      "@oclif/plugin-which"
+      "@oclif/plugin-plugins"
     ],
     "topicSeparator": " ",
     "topics": {
@@ -56,43 +56,42 @@
     }
   },
   "dependencies": {
-    "@oclif/core": "^3",
-    "@oclif/plugin-autocomplete": "^3.0.13",
-    "@oclif/plugin-commands": "^3.2.0",
-    "@oclif/plugin-help": "^6",
-    "@oclif/plugin-not-found": "^3.0.14",
-    "@oclif/plugin-plugins": "^5",
-    "@oclif/plugin-update": "^4.2.0",
-    "@oclif/plugin-warn-if-update-available": "^3.0.14",
-    "@oclif/plugin-which": "^3.1.5",
+    "@oclif/core": "^3.26.3",
+    "@oclif/plugin-autocomplete": "^3.0.15",
+    "@oclif/plugin-commands": "^3.3.1",
+    "@oclif/plugin-help": "^6.0.21",
+    "@oclif/plugin-not-found": "^3.1.4",
+    "@oclif/plugin-update": "^4.2.5",
+    "@oclif/plugin-warn-if-update-available": "^3.0.15",
     "chalk": "^5.3.0",
+    "figlet": "^1.7.0",
     "fs-extra": "^11.2.0",
-    "inquirer": "^9.2.17",
+    "inquirer": "^9.2.18",
     "node-notifier": "^10.0.1",
     "ora": "^8.0.1",
+    "rimraf": "^5.0.5",
     "simple-git": "^3.24.0"
   },
   "devDependencies": {
     "@oclif/prettier-config": "^0.2.1",
-    "@oclif/test": "^3",
-    "@types/chai": "^4",
+    "@oclif/test": "^3.2.10",
+    "@types/chai": "^4.3.14",
+    "@types/figlet": "^1.5.8",
     "@types/fs-extra": "^11.0.4",
     "@types/inquirer": "^9.0.7",
-    "@types/mocha": "^10",
-    "@types/node": "^18",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.12.7",
     "@types/node-notifier": "^8.0.5",
-    "chai": "^4",
-    "eslint": "^8",
-    "eslint-config-oclif": "^5",
-    "eslint-config-oclif-typescript": "^3",
+    "chai": "^5.1.0",
+    "eslint": "^8.57.0",
+    "eslint-config-oclif": "^5.1.2",
+    "eslint-config-oclif-typescript": "^3.1.5",
     "eslint-config-prettier": "^9.1.0",
     "javascript-obfuscator": "^4.1.0",
-    "mocha": "^10",
-    "oclif": "^4.7.6",
-    "rimraf": "^5.0.5",
+    "mocha": "^10.4.0",
     "shx": "^0.3.4",
     "ts-node": "^10.9.2",
-    "typescript": "^5",
+    "typescript": "^5.4.5",
     "zx": "^8.0.1"
   },
   "engines": {

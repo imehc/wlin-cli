@@ -1,13 +1,14 @@
-import {Args, Command, Flags} from '@oclif/core'
+import { Args, Command, Flags } from '@oclif/core'
 import chalk from 'chalk'
-import {ensureDir, exists, remove} from 'fs-extra'
+import figlet from "figlet";
+import { ensureDir, exists, remove } from 'fs-extra'
 import inquirer from 'inquirer'
-import {exec} from 'node:child_process'
+import { exec } from 'node:child_process'
 import path from 'node:path'
 import notifier from 'node-notifier'
 import ora from 'ora'
-import {rimraf} from 'rimraf'
-import {simpleGit} from 'simple-git'
+import { rimraf } from 'rimraf'
+import { simpleGit } from 'simple-git'
 
 const templates = ['react-ts', 'vue-ts'] as const
 
@@ -20,22 +21,29 @@ type BaseConfig = {
 
 export default class Create extends Command {
   static args = {
-    name: Args.string({description: 'projectName'}),
+    name: Args.string({ description: 'projectName' }),
   }
 
   static description = 'Create a project template'
 
   static flags = {
-    template: Flags.string({options: templates}),
+    template: Flags.string({ options: templates }),
   }
 
   public async run(): Promise<void> {
-    const config = await this.initConfig()
-    // this.log(`the template is: ${config.template}, name: ${config.name}, targetDir: ${config.targetDir}`)
-    this.createProject(config)
+    figlet("wlin-cli", async (err, data) => {
+      if (err) {
+        this.error(err);
+      }
+
+      this.log(data);
+      const config = await this.initConfig()
+      this.log(`the template is: ${config.template}, name: ${config.name}, targetDir: ${config.targetDir}`)
+      this.createProject(config)
+    });
   }
 
-  private async createProject({isRepeat, name, targetDir, template}: BaseConfig): Promise<void> {
+  private async createProject({ isRepeat, name, targetDir, template }: BaseConfig): Promise<void> {
     const initSpinner = ora(chalk.cyan('Create directory...\n'))
     initSpinner.start()
     if (isRepeat) {
@@ -51,8 +59,8 @@ export default class Create extends Command {
 
     try {
       initSpinner.text = chalk.green('Download template\n')
-      await this.downloadTemplate({targetDir, template})
-      await rimraf(`${targetDir}/.git`).catch(() => {})
+      await this.downloadTemplate({ targetDir, template })
+      await rimraf(`${targetDir}/.git`).catch(() => { })
       exec(`cd ${targetDir} && npm pkg set name="${name}"`, (error) => {
         if (error) {
           initSpinner.text = chalk.red(error)
@@ -71,15 +79,15 @@ export default class Create extends Command {
     }
   }
 
-  private async downloadTemplate({targetDir, template}: Pick<BaseConfig, 'targetDir' | 'template'>): Promise<void> {
+  private async downloadTemplate({ targetDir, template }: Pick<BaseConfig, 'targetDir' | 'template'>): Promise<void> {
     const basicRemoteUrl = 'git@github.com:imehc/fronted-template.git'
     await simpleGit().clone(basicRemoteUrl, targetDir, ['--branch', template])
   }
 
   private async initConfig(): Promise<BaseConfig> {
-    const {args, flags} = await this.parse(Create)
-    let {name} = args
-    let {template} = flags
+    const { args, flags } = await this.parse(Create)
+    let { name } = args
+    let { template } = flags
     let isRepeat = false
 
     if (!name) {
@@ -134,7 +142,7 @@ export default class Create extends Command {
     if (!template) {
       const responses = await inquirer.prompt([
         {
-          choices: templates.map((name) => ({name})),
+          choices: templates.map((name) => ({ name })),
           message: 'select a template',
           name: 'template',
           type: 'list',
@@ -143,7 +151,7 @@ export default class Create extends Command {
       template = responses.template
     }
 
-    return {isRepeat, name, targetDir, template} as BaseConfig
+    return { isRepeat, name, targetDir, template } as BaseConfig
   }
 
   private sleep(ms: number): Promise<void> {
