@@ -11,10 +11,12 @@ import { rimraf } from 'rimraf'
 import { simpleGit } from 'simple-git'
 
 const templates = ['react-ts', 'vue-ts'] as const
+const origins = ['github', 'gitee'] as const
 
 type BaseConfig = {
   isRepeat?: boolean
   name: string
+  origin: (typeof origins)[number]
   targetDir: string
   template: (typeof templates)[number]
 }
@@ -27,6 +29,7 @@ export default class Create extends Command {
   static description = 'Create a project template'
 
   static flags = {
+    origin: Flags.string({ options: origins }),
     template: Flags.string({ options: templates }),
   }
 
@@ -38,12 +41,12 @@ export default class Create extends Command {
 
       this.log(data);
       const config = await this.initConfig()
-      this.log(`the template is: ${config.template}, name: ${config.name}, targetDir: ${config.targetDir}`)
+      // this.log(`the template is: ${config.template}, name: ${config.name}, targetDir: ${config.targetDir}`)
       this.createProject(config)
     });
   }
 
-  private async createProject({ isRepeat, name, targetDir, template }: BaseConfig): Promise<void> {
+  private async createProject({ isRepeat, name, origin, targetDir,template }: BaseConfig): Promise<void> {
     const initSpinner = ora(chalk.cyan('Create directory...\n'))
     initSpinner.start()
     if (isRepeat) {
@@ -59,7 +62,7 @@ export default class Create extends Command {
 
     try {
       initSpinner.text = chalk.green('Download template\n')
-      await this.downloadTemplate({ targetDir, template })
+      await this.downloadTemplate({ origin, targetDir ,template})
       await rimraf(`${targetDir}/.git`).catch(() => { })
       exec(`cd ${targetDir} && npm pkg set name="${name}"`, (error) => {
         if (error) {
@@ -79,15 +82,26 @@ export default class Create extends Command {
     }
   }
 
-  private async downloadTemplate({ targetDir, template }: Pick<BaseConfig, 'targetDir' | 'template'>): Promise<void> {
-    const basicRemoteUrl = 'git@github.com:imehc/fronted-template.git'
-    await simpleGit().clone(basicRemoteUrl, targetDir, ['--branch', template])
+  private async downloadTemplate({ origin, targetDir,template }: Pick<BaseConfig, 'origin' | 'targetDir'|'template'>): Promise<void> {
+    switch (origin) {
+      case "gitee": {
+        const basicRemoteUrl = 'https://gitee.com/imehc/fronted-template.git'
+        await simpleGit().clone(basicRemoteUrl, targetDir, ['--branch', template])
+        break;
+      }
+      
+      default: {
+        const basicRemoteUrl = 'https://github.com/imehc/fronted-template.git'
+        await simpleGit().clone(basicRemoteUrl, targetDir, ['--branch', template])
+        break;
+      }
+    }
   }
 
   private async initConfig(): Promise<BaseConfig> {
     const { args, flags } = await this.parse(Create)
     let { name } = args
-    let { template } = flags
+    let { origin, template } = flags
     let isRepeat = false
 
     if (!name) {
@@ -151,7 +165,19 @@ export default class Create extends Command {
       template = responses.template
     }
 
-    return { isRepeat, name, targetDir, template } as BaseConfig
+    if (!origin) {
+      const responses = await inquirer.prompt([
+        {
+          choices: origins.map((name) => ({ name })),
+          message: 'Select a warehouse source',
+          name: 'origin',
+          type: 'list',
+        },
+      ])
+      origin = responses.origin
+    }
+
+    return { isRepeat, name, origin, targetDir, template } as BaseConfig
   }
 
   private sleep(ms: number): Promise<void> {
