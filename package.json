@@ -33,7 +33,7 @@
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",
     "posttest": "npm run lint",
     "version": "npx oclif readme && git add README.md",
-    "pub": "zx publish.mjs"
+    "pub": "sh version.sh"
   },
   "oclif": {
     "bin": "wlin-cli",
