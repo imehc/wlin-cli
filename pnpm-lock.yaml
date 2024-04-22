@@ -89,8 +89,8 @@ devDependencies:
     specifier: ^5.1.2
     version: 5.1.2(eslint@8.57.0)
   eslint-config-oclif-typescript:
-    specifier: ^3.1.5
-    version: 3.1.5(eslint@8.57.0)(typescript@5.4.5)
+    specifier: ^3.1.6
+    version: 3.1.6(eslint@8.57.0)(typescript@5.4.5)
   eslint-config-prettier:
     specifier: ^9.1.0
     version: 9.1.0(eslint@8.57.0)
@@ -1560,8 +1560,8 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  /eslint-config-oclif-typescript@3.1.5(eslint@8.57.0)(typescript@5.4.5):
-    resolution: {integrity: sha512-bw6HYbv5UQcfK5knAPemViB+CpbxmAOsnaxtvFAEeOvQM61eVaNKtPyCj1DRgUOBUN7knJ0NBXOqUny+0nwSkQ==}
+  /eslint-config-oclif-typescript@3.1.6(eslint@8.57.0)(typescript@5.4.5):
+    resolution: {integrity: sha512-K/Gv19vzTaeLQcs5syZ+Rup8RZfMclIuO2mV9YPG3GN64nSPA545+I7/uiaaxE4Ka+fKg2kZmMq3cFT0TOidpA==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@typescript-eslint/eslint-plugin': 6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.57.0)(typescript@5.4.5)
@@ -1569,7 +1569,7 @@ packages:
       eslint-config-xo-space: 0.35.0(eslint@8.57.0)
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.21.0)(eslint-plugin-import@2.29.1)(eslint@8.57.0)
       eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
-      eslint-plugin-mocha: 10.4.2(eslint@8.57.0)
+      eslint-plugin-mocha: 10.4.3(eslint@8.57.0)
       eslint-plugin-n: 15.7.0(eslint@8.57.0)
       eslint-plugin-perfectionist: 2.9.0(eslint@8.57.0)(typescript@5.4.5)
     transitivePeerDependencies:
@@ -1736,6 +1736,18 @@ packages:
 
   /eslint-plugin-mocha@10.4.2(eslint@8.57.0):
     resolution: {integrity: sha512-cur4dVYnSEWTBwdqIBQFxa/9siAhesu0TX+lbJ4ClE9j0eNMNe6BSx3vkFFNz6tGoveyMyELFXa30f3fvuAVDg==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      eslint: '>=7.0.0'
+    dependencies:
+      eslint: 8.57.0
+      eslint-utils: 3.0.0(eslint@8.57.0)
+      globals: 13.24.0
+      rambda: 7.5.0
+    dev: true
+
+  /eslint-plugin-mocha@10.4.3(eslint@8.57.0):
+    resolution: {integrity: sha512-emc4TVjq5Ht0/upR+psftuz6IBG5q279p+1dSRDeHf+NS9aaerBi3lXKo1SEzwC29hFIW21gO89CEWSvRsi8IQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       eslint: '>=7.0.0'
