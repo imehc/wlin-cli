@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@oclif/core':
-    specifier: ^3.26.3
-    version: 3.26.3
+    specifier: ^3.26.4
+    version: 3.26.4
   '@oclif/plugin-autocomplete':
     specifier: ^3.0.15
     version: 3.0.15
@@ -325,8 +325,8 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
-  /@oclif/core@3.26.3:
-    resolution: {integrity: sha512-e6Vwu+cb2Sn4qFFpmY1fQLRWIY5ugruMuN94xb7+kyUzxrirYjJATPhuCT1G5xj9Dk+hTMH+Sp6XcHcVTS1lHg==}
+  /@oclif/core@3.26.4:
+    resolution: {integrity: sha512-ntfo2ut7enNtAn/jB/dryMUPBM2Fh8Fydmi3k/Ybo6lCGU/hmsPFkBRjCEJAQMyNkK2yVZARaWogdOrcVgFz+w==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@types/cli-progress': 3.11.5
@@ -362,7 +362,7 @@ packages:
     resolution: {integrity: sha512-Q0XcqU3YQ6mAi8PGAfbsLBCquC6LmaxgMblxUlp6o3MvlsaO3tsQOWg20Mlciq4t+IX1r6VmP3L/EtkuJHFluQ==}
     engines: {node: '>=18.0.0'}
     dependencies:
-      '@oclif/core': 3.26.3
+      '@oclif/core': 3.26.4
       chalk: 5.3.0
       debug: 4.3.4(supports-color@8.1.1)
       ejs: 3.1.10
@@ -374,7 +374,7 @@ packages:
     resolution: {integrity: sha512-SikJBlXaVsbCX3A8YBdpU70VvU58P75+4vMt0AtJFEPYS1n+5srrLJgTrEFJkCfFvlqj1SNI9yMFr1TG+LKN9w==}
     engines: {node: '>=18.0.0'}
     dependencies:
-      '@oclif/core': 3.26.3
+      '@oclif/core': 3.26.4
       lodash.pickby: 4.6.0
       lodash.sortby: 4.7.0
       lodash.template: 4.5.0
@@ -385,7 +385,7 @@ packages:
     resolution: {integrity: sha512-w860r9d456xhw1GPaos9yQF+BZeFY9UKdrINbL3fZFX5ZHhr/zGT4Fep5wUkHogjjnSB8+ZHi3D6j2jScIizUw==}
     engines: {node: '>=18.0.0'}
     dependencies:
-      '@oclif/core': 3.26.3
+      '@oclif/core': 3.26.4
     dev: false
 
   /@oclif/plugin-not-found@3.1.4:
@@ -393,7 +393,7 @@ packages:
     engines: {node: '>=18.0.0'}
     dependencies:
       '@inquirer/confirm': 3.1.4
-      '@oclif/core': 3.26.3
+      '@oclif/core': 3.26.4
       chalk: 5.3.0
       fast-levenshtein: 3.0.0
     dev: false
@@ -402,7 +402,7 @@ packages:
     resolution: {integrity: sha512-6Up0Bho9GrvdN9qv2r/1XvJYU8GgjODZIoqprwOZ5gxzBhr5AcndyxN+pZZrBrBHxEWW2ScUUV1icnxgUxiEdQ==}
     engines: {node: '>=18.0.0'}
     dependencies:
-      '@oclif/core': 3.26.3
+      '@oclif/core': 3.26.4
       chalk: 5.3.0
       cross-spawn: 7.0.3
       debug: 4.3.4(supports-color@8.1.1)
@@ -420,7 +420,7 @@ packages:
     resolution: {integrity: sha512-JtPTJFjL6izMCe5dDS2ix2PyWAD2DeJ5Atzd2HHRifbPcmOxaUE62FKTnarIwfPHLMF/nN33liwo9InAdirozg==}
     engines: {node: '>=18.0.0'}
     dependencies:
-      '@oclif/core': 3.26.3
+      '@oclif/core': 3.26.4
       chalk: 5.3.0
       debug: 4.3.4(supports-color@8.1.1)
       http-call: 5.3.0
@@ -437,7 +437,7 @@ packages:
     resolution: {integrity: sha512-9h6rMHnFS7zf0CLmfqtbAmdDSLpYF8otu25YpeqQXOX3b9TYeyfOvD61TkkxJ2T3zpqnrViNzifsF6gfM6xanQ==}
     engines: {node: '>=18.0.0'}
     dependencies:
-      '@oclif/core': 3.26.3
+      '@oclif/core': 3.26.4
       chai: 4.4.1
       fancy-test: 3.0.14
     transitivePeerDependencies:
