@@ -1,16 +1,16 @@
-import { Args, Command, Flags } from '@oclif/core'
+import {Args, Command, Flags} from '@oclif/core'
 import chalk from 'chalk'
-import figlet from "figlet";
-import { ensureDir, exists, remove } from 'fs-extra'
+import figlet from 'figlet'
+import {ensureDir, exists, remove} from 'fs-extra'
 import inquirer from 'inquirer'
-import { exec } from 'node:child_process'
+import {exec} from 'node:child_process'
 import path from 'node:path'
 import notifier from 'node-notifier'
 import ora from 'ora'
-import { rimraf } from 'rimraf'
-import { simpleGit } from 'simple-git'
+import {rimraf} from 'rimraf'
+import {simpleGit} from 'simple-git'
 
-const templates = ['react-ts', 'vue-ts'] as const
+const templates = ['next', 'react-ts', 'vue-ts'] as const
 const origins = ['github', 'gitee'] as const
 
 type BaseConfig = {
@@ -23,30 +23,30 @@ type BaseConfig = {
 
 export default class Create extends Command {
   static args = {
-    name: Args.string({ description: 'projectName' }),
+    name: Args.string({description: 'projectName'}),
   }
 
   static description = 'Create a project template'
 
   static flags = {
-    origin: Flags.string({ options: origins }),
-    template: Flags.string({ options: templates }),
+    origin: Flags.string({options: origins}),
+    template: Flags.string({options: templates}),
   }
 
   public async run(): Promise<void> {
-    figlet("wlin-cli", async (err, data) => {
+    figlet('wlin-cli', async (err, data) => {
       if (err) {
-        this.error(err);
+        this.error(err)
       }
 
-      this.log(data);
+      this.log(data)
       const config = await this.initConfig()
       // this.log(`the template is: ${config.template}, name: ${config.name}, targetDir: ${config.targetDir}`)
       this.createProject(config)
-    });
+    })
   }
 
-  private async createProject({ isRepeat, name, origin, targetDir,template }: BaseConfig): Promise<void> {
+  private async createProject({isRepeat, name, origin, targetDir, template}: BaseConfig): Promise<void> {
     const initSpinner = ora(chalk.cyan('Create directory...\n'))
     initSpinner.start()
     if (isRepeat) {
@@ -62,8 +62,8 @@ export default class Create extends Command {
 
     try {
       initSpinner.text = chalk.green('Download template\n')
-      await this.downloadTemplate({ origin, targetDir ,template})
-      await rimraf(`${targetDir}/.git`).catch(() => { })
+      await this.downloadTemplate({origin, targetDir, template})
+      await rimraf(`${targetDir}/.git`).catch(() => {})
       exec(`cd ${targetDir} && npm pkg set name="${name}"`, (error) => {
         if (error) {
           initSpinner.text = chalk.red(error)
@@ -82,26 +82,30 @@ export default class Create extends Command {
     }
   }
 
-  private async downloadTemplate({ origin, targetDir,template }: Pick<BaseConfig, 'origin' | 'targetDir'|'template'>): Promise<void> {
+  private async downloadTemplate({
+    origin,
+    targetDir,
+    template,
+  }: Pick<BaseConfig, 'origin' | 'targetDir' | 'template'>): Promise<void> {
     switch (origin) {
-      case "gitee": {
+      case 'gitee': {
         const basicRemoteUrl = 'https://gitee.com/imehc/fronted-template.git'
         await simpleGit().clone(basicRemoteUrl, targetDir, ['--branch', template])
-        break;
+        break
       }
-      
+
       default: {
         const basicRemoteUrl = 'https://github.com/imehc/fronted-template.git'
         await simpleGit().clone(basicRemoteUrl, targetDir, ['--branch', template])
-        break;
+        break
       }
     }
   }
 
   private async initConfig(): Promise<BaseConfig> {
-    const { args, flags } = await this.parse(Create)
-    let { name } = args
-    let { origin, template } = flags
+    const {args, flags} = await this.parse(Create)
+    let {name} = args
+    let {origin, template} = flags
     let isRepeat = false
 
     if (!name) {
@@ -156,7 +160,7 @@ export default class Create extends Command {
     if (!template) {
       const responses = await inquirer.prompt([
         {
-          choices: templates.map((name) => ({ name })),
+          choices: templates.map((name) => ({name})),
           message: 'select a template',
           name: 'template',
           type: 'list',
@@ -168,7 +172,7 @@ export default class Create extends Command {
     if (!origin) {
       const responses = await inquirer.prompt([
         {
-          choices: origins.map((name) => ({ name })),
+          choices: origins.map((name) => ({name})),
           message: 'Select a warehouse source',
           name: 'origin',
           type: 'list',
@@ -177,7 +181,7 @@ export default class Create extends Command {
       origin = responses.origin
     }
 
-    return { isRepeat, name, origin, targetDir, template } as BaseConfig
+    return {isRepeat, name, origin, targetDir, template} as BaseConfig
   }
 
   private sleep(ms: number): Promise<void> {
