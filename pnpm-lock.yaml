@@ -21,8 +21,8 @@ dependencies:
     specifier: ^3.1.4
     version: 3.1.7
   '@oclif/plugin-update':
-    specifier: ^4.2.5
-    version: 4.2.9
+    specifier: ^4.2.10
+    version: 4.2.10
   '@oclif/plugin-warn-if-update-available':
     specifier: ^3.0.15
     version: 3.0.16
@@ -402,8 +402,8 @@ packages:
       fast-levenshtein: 3.0.0
     dev: false
 
-  /@oclif/plugin-update@4.2.9:
-    resolution: {integrity: sha512-9Q+j5/mncahI+B66yyHGnWc0Ay4rpTFnN1fKgdMrFIXbEdEGqbRlR2xdbie321xGvAlugVZv5uVbmcSN/Bb+3Q==}
+  /@oclif/plugin-update@4.2.10:
+    resolution: {integrity: sha512-VkjqVH9qdHlAlz5HHs3yhFZCSlqMDToh9YPLCh+H9uvQ/lw3uiaxVkke5+ZlynTFKCGT4iJNLu3VTu3yUYoN/w==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@inquirer/select': 2.3.2
