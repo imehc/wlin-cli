@@ -48,6 +48,8 @@ jobs:
       - name: Run build script
         run: pnpm build
           
-      - uses: JS-DevTools/npm-publish@v3
+      - name: Publish to npm
+        if: "!startsWith(github.event.head_commit.message, 'chore(deps):')"
+        uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
