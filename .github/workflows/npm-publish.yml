@@ -47,9 +47,19 @@ jobs:
 
       - name: Run build script
         run: pnpm build
+
+      - name: Echo branch name and condition
+        run: |
+          echo "Current branch is ${GITHUB_REF#refs/heads/}"
+          if [[ "${GITHUB_REF#refs/heads/}" == "main" ]]; then
+            echo "Condition is satisfied"
+          else
+            echo "Condition is not satisfied"
+          fi
           
       - name: Publish to npm
-        if: "!startsWith(github.event.head_commit.message, 'chore(deps):')"
+        # if: "!startsWith(github.event.head_commit.message, 'chore(deps):')"
+        if: github.ref == 'refs/heads/main'
         uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
