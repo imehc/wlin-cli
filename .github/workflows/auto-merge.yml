@@ -14,6 +14,6 @@ jobs:
       # 或
       # - uses: actions/checkout@v4
       # - uses: ahmadnassri/action-dependabot-auto-merge@v2
-      #   with:
-      #     # target: minor
-      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # target: minor
+          github-token: ${{ secrets.GITHUB_TOKEN }}
