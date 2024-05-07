@@ -59,8 +59,8 @@ devDependencies:
     specifier: ^3.2.13
     version: 3.2.13
   '@types/chai':
-    specifier: ^4.3.15
-    version: 4.3.15
+    specifier: ^4.3.16
+    version: 4.3.16
   '@types/figlet':
     specifier: ^1.5.8
     version: 1.5.8
@@ -506,8 +506,8 @@ packages:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
     dev: true
 
-  /@types/chai@4.3.15:
-    resolution: {integrity: sha512-PYVSvyeZqy9++MoSegq88PxoPndWDDLGbJmE/OZnzUk3D4cCRTmA4N6EX3g0GgLVA+vtys7bj4luhkVCglGTkQ==}
+  /@types/chai@4.3.16:
+    resolution: {integrity: sha512-PatH4iOdyh3MyWtmHVFXLWCCIhUbopaltqddG9BzB+gMIzee2MJrvd+jouii9Z3wzQJruGWAm7WOMjgfG8hQlQ==}
     dev: true
 
   /@types/cli-progress@3.11.5:
@@ -2016,7 +2016,7 @@ packages:
     resolution: {integrity: sha512-FkiDltQA8PBZzw5tUnMrP1QtwIdNQWxxbZK5C22M9wu6HfFNciwkG3D9siT4l4s1fBTDaEG+Fdkbpi9FDTxtrg==}
     engines: {node: '>=18.0.0'}
     dependencies:
-      '@types/chai': 4.3.15
+      '@types/chai': 4.3.16
       '@types/lodash': 4.17.0
       '@types/node': 20.12.8
       '@types/sinon': 17.0.3
