@@ -18,8 +18,8 @@ dependencies:
     specifier: ^6.0.21
     version: 6.0.21
   '@oclif/plugin-not-found':
-    specifier: ^3.1.4
-    version: 3.1.7
+    specifier: ^3.1.8
+    version: 3.1.8
   '@oclif/plugin-update':
     specifier: ^4.2.10
     version: 4.2.10
@@ -392,8 +392,8 @@ packages:
       '@oclif/core': 3.26.5
     dev: false
 
-  /@oclif/plugin-not-found@3.1.7:
-    resolution: {integrity: sha512-fGR1gJE7X6BX3QHAtVX4Tg3T04mrnhtCIGzksQYYcelSftTS0nASnQ3uDacdGwbUPqaEq7HfUyh/G7WRIRxcrw==}
+  /@oclif/plugin-not-found@3.1.8:
+    resolution: {integrity: sha512-TbpMJ7PODaXuodSivqJo9cFxiVxNUmkCCl1BTdMpLuy82nxMv6aON0W1DVJryJ/OQjM4RKXvH3x3qCB7Xn0U8g==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@inquirer/confirm': 3.1.6
