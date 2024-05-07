@@ -56,7 +56,7 @@
     }
   },
   "dependencies": {
-    "@oclif/core": "^3.26.3",
+    "@oclif/core": "^3.26.6",
     "@oclif/plugin-autocomplete": "^3.0.17",
     "@oclif/plugin-commands": "^3.3.2",
     "@oclif/plugin-help": "^6.0.21",
