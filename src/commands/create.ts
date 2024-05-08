@@ -10,7 +10,7 @@ import ora from 'ora'
 import {rimraf} from 'rimraf'
 import {simpleGit} from 'simple-git'
 
-const templates = ['next', 'react-ts', 'vue-ts'] as const
+const templates = [/** 'next', */ 'react-ts', 'vue-ts'] as const
 const origins = ['github', 'gitee'] as const
 
 type BaseConfig = {
@@ -64,6 +64,7 @@ export default class Create extends Command {
       initSpinner.text = chalk.green('Download template\n')
       await this.downloadTemplate({origin, targetDir, template})
       await rimraf(`${targetDir}/.git`).catch(() => {})
+      await rimraf(`${targetDir}/.github`).catch(() => {})
       exec(`cd ${targetDir} && npm pkg set name="${name}"`, (error) => {
         if (error) {
           initSpinner.text = chalk.red(error)
