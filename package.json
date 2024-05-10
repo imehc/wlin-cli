@@ -82,7 +82,7 @@
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.12.11",
     "@types/node-notifier": "^8.0.5",
-    "chai": "^5.1.0",
+    "chai": "^5.1.1",
     "eslint": "^8.57.0",
     "eslint-config-oclif": "^5.1.2",
     "eslint-config-oclif-typescript": "^3.1.5",
