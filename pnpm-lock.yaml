@@ -12,8 +12,8 @@ dependencies:
     specifier: ^3.0.17
     version: 3.0.17
   '@oclif/plugin-commands':
-    specifier: ^3.3.3
-    version: 3.3.3
+    specifier: ^3.3.4
+    version: 3.3.4
   '@oclif/plugin-help':
     specifier: ^6.0.21
     version: 6.0.21
@@ -374,8 +374,8 @@ packages:
       - supports-color
     dev: false
 
-  /@oclif/plugin-commands@3.3.3:
-    resolution: {integrity: sha512-8wRZnzvCLsc0+tfelu3FbkYq2GCHUSx2w5BiUMw8nBpZ5y3i3Oz/6TxcP3L52a8Up9LAP8PneQCsGoRid72PDA==}
+  /@oclif/plugin-commands@3.3.4:
+    resolution: {integrity: sha512-jjn24eE4gXY59Jmq6w48tPnH7WLJSt9QoDdJBcN4VLHqQlwkXpTllVKetCR0QG3pDt7ap1nl6kIRs/nAbbownw==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@oclif/core': 3.26.6
