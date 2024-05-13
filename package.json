@@ -74,7 +74,7 @@
   },
   "devDependencies": {
     "@oclif/prettier-config": "^0.2.1",
-    "@oclif/test": "^3.2.13",
+    "@oclif/test": "^3.2.15",
     "@types/chai": "^4.3.16",
     "@types/figlet": "^1.5.8",
     "@types/fs-extra": "^11.0.4",
