@@ -69,7 +69,7 @@
     "inquirer": "^9.2.18",
     "node-notifier": "^10.0.1",
     "ora": "^8.0.1",
-    "rimraf": "^5.0.5",
+    "rimraf": "^5.0.7",
     "simple-git": "^3.24.0"
   },
   "devDependencies": {
