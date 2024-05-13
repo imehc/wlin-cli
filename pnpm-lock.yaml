@@ -15,8 +15,8 @@ dependencies:
     specifier: ^3.3.4
     version: 3.3.4
   '@oclif/plugin-help':
-    specifier: ^6.0.21
-    version: 6.0.21
+    specifier: ^6.0.22
+    version: 6.0.22
   '@oclif/plugin-not-found':
     specifier: ^3.1.8
     version: 3.1.8
@@ -382,8 +382,8 @@ packages:
       lodash: 4.17.21
     dev: false
 
-  /@oclif/plugin-help@6.0.21:
-    resolution: {integrity: sha512-w860r9d456xhw1GPaos9yQF+BZeFY9UKdrINbL3fZFX5ZHhr/zGT4Fep5wUkHogjjnSB8+ZHi3D6j2jScIizUw==}
+  /@oclif/plugin-help@6.0.22:
+    resolution: {integrity: sha512-IPgUvPSdZMCHzCwCRVDUMWtFkWZSoU6Z7igNclugLIpF3Ac3vKkZGguWZ+SLK3e7012etDzgAHjXFELYOqqbsw==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@oclif/core': 3.26.6
