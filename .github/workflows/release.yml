@@ -1,0 +1,76 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check if version has been updated
+        id: check
+        uses: EndBug/version-check@v2.1.4
+        with:
+          diff-search: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Log when changed
+        if: steps.check.outputs.changed == 'true'
+        run: 'echo "Version change found in commit ${{ steps.check.outputs.commit }}! New version: ${{ steps.check.outputs.version }} (${{ steps.check.outputs.type }})"'
+        
+      - name: Log when unchanged
+        if: steps.check.outputs.changed == 'false'
+        run: 'echo "No version change :/"'
+
+      - uses: pnpm/action-setup@v4
+        if: steps.check.outputs.changed == 'true'
+        with:
+          version: 9 
+
+      # 指定node版本
+      - name: Set node version
+        if: steps.check.outputs.changed == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+          cache-dependency-path: 'pnpm-lock.yaml'
+
+      - name: Cache pnpm dependencies
+        if: steps.check.outputs.changed == 'true'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pnpm-store
+          key: |
+            ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      # 安装依赖，包括我们的 semantic-release 全套
+      - name: Install dependencies
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          pnpm install
+      
+      # 打包你的插件/组件/库等等等
+      - name: Build
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          pnpm run build
+
+      # 执行 semantic-release 发布包
+      - name: Release
+        if: steps.check.outputs.changed == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
+

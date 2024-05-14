@@ -2,17 +2,17 @@ name: Publish Package to npmjs
 
 on:
   push:
-    branches: 
-      - main
-    paths:
-      - 'package.json'
-    tags-ignore:
-      - '**'
+    # branches: 
+    #   - main
+    # paths:
+    #   - 'package.json'
+    # tags-ignore:
+    #   - '**'
   pull_request:
-    branches: 
-      - main
-    paths:
-      - 'package.json'
+    # branches: 
+    #   - main
+    # paths:
+    #   - 'package.json'
     
 jobs:
   build:
@@ -23,7 +23,7 @@ jobs:
 
       - uses: pnpm/action-setup@v4
         with:
-          version: 8 
+          version: 9 
 
       - uses: actions/setup-node@v4
         with:
@@ -48,21 +48,24 @@ jobs:
       - name: Run build script
         run: pnpm build
 
-      # https://github.com/marketplace/actions/version-check
-      - name: Check if version has been updated
-        id: check
-        uses: EndBug/version-check@v2.1.4
-        with:
-          diff-search: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run test script
+        run: pnpm test
 
-      - name: Log when changed
-        if: steps.check.outputs.changed == 'true'
-        run: 'echo "Version change found in commit ${{ steps.check.outputs.commit }}! New version: ${{ steps.check.outputs.version }} (${{ steps.check.outputs.type }})"'
+      # https://github.com/marketplace/actions/version-check
+      # - name: Check if version has been updated
+      #   id: check
+      #   uses: EndBug/version-check@v2.1.4
+      #   with:
+      #     diff-search: true
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+
+      # - name: Log when changed
+      #   if: steps.check.outputs.changed == 'true'
+      #   run: 'echo "Version change found in commit ${{ steps.check.outputs.commit }}! New version: ${{ steps.check.outputs.version }} (${{ steps.check.outputs.type }})"'
         
-      - name: Log when unchanged
-        if: steps.check.outputs.changed == 'false'
-        run: 'echo "No version change :/"'
+      # - name: Log when unchanged
+      #   if: steps.check.outputs.changed == 'false'
+      #   run: 'echo "No version change :/"'
 
     
       # - name: Echo branch name and condition
@@ -74,10 +77,10 @@ jobs:
       #       echo "Condition is not satisfied"
       #     fi
           
-      - name: Publish to npm
-        # if: "!startsWith(github.event.head_commit.message, 'chore(deps):')"
-        # if: github.ref == 'refs/heads/main'
-        if: steps.check.outputs.changed == 'true'
-        uses: JS-DevTools/npm-publish@v3
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+      # - name: Publish to npm
+      #   # if: "!startsWith(github.event.head_commit.message, 'chore(deps):')"
+      #   # if: github.ref == 'refs/heads/main'
+      #   if: steps.check.outputs.changed == 'true'
+      #   uses: JS-DevTools/npm-publish@v3
+      #   with:
+      #     token: ${{ secrets.NPM_TOKEN }}
