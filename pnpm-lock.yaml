@@ -65,8 +65,8 @@ devDependencies:
     specifier: ^0.2.1
     version: 0.2.1
   '@oclif/test':
-    specifier: ^4.0.1
-    version: 4.0.1(@oclif/core@3.26.6)
+    specifier: ^4.0.2
+    version: 4.0.2(@oclif/core@3.26.6)
   '@semantic-release/changelog':
     specifier: ^6.0.3
     version: 6.0.3(semantic-release@23.1.1)
@@ -666,8 +666,8 @@ packages:
     resolution: {integrity: sha512-XB8kwQj8zynXjIIWRm+6gO/r8Qft2xKtwBMSmq1JRqtA6TpwpqECqiu8LosBCyg2JBXuUy2lU23/L98KIR7FrQ==}
     dev: true
 
-  /@oclif/test@4.0.1(@oclif/core@3.26.6):
-    resolution: {integrity: sha512-/6qanxW7ImHe+ojCTqegtX+TRH0SZ5ArfDtgMUM6cQIZjkkFdp/2jIYdyGqvmcSLUtPV47fofvG9fSl2F/fsyA==}
+  /@oclif/test@4.0.2(@oclif/core@3.26.6):
+    resolution: {integrity: sha512-2aWjvDzi6tw/NYnKjhSdatiwY8PpHvlsFiv0DDkQ1Z9TqclMcm56xRzKiBKSBq2bVrnItfJYyFB3pb4tvxpfUw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       '@oclif/core': '>= 3.0.0'
