@@ -66,11 +66,17 @@ jobs:
         run: |
           pnpm run build
 
-      # 执行 semantic-release 发布包
-      - name: Release
+      - uses: JS-DevTools/npm-publish@v3
         if: steps.check.outputs.changed == 'true'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+        with:
+          package: pkg/package.json
+          token: ${{ secrets.NPM_TOKEN }}
+
+      # # 执行 semantic-release 发布包
+      # - name: Release
+      #   if: steps.check.outputs.changed == 'true'
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #   # run: npx semantic-release
 
