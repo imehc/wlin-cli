@@ -65,8 +65,8 @@ devDependencies:
     specifier: ^0.2.1
     version: 0.2.1
   '@oclif/test':
-    specifier: ^4.0.2
-    version: 4.0.2(@oclif/core@3.26.6)
+    specifier: ^4.0.3
+    version: 4.0.3(@oclif/core@3.26.6)
   '@semantic-release/changelog':
     specifier: ^6.0.3
     version: 6.0.3(semantic-release@23.1.1)
@@ -669,15 +669,15 @@ packages:
     resolution: {integrity: sha512-XB8kwQj8zynXjIIWRm+6gO/r8Qft2xKtwBMSmq1JRqtA6TpwpqECqiu8LosBCyg2JBXuUy2lU23/L98KIR7FrQ==}
     dev: true
 
-  /@oclif/test@4.0.2(@oclif/core@3.26.6):
-    resolution: {integrity: sha512-2aWjvDzi6tw/NYnKjhSdatiwY8PpHvlsFiv0DDkQ1Z9TqclMcm56xRzKiBKSBq2bVrnItfJYyFB3pb4tvxpfUw==}
+  /@oclif/test@4.0.3(@oclif/core@3.26.6):
+    resolution: {integrity: sha512-LxcRYVFTUHoOW2Koo1lmbEwl/4HRFIdNWXuUY1/PHEawjwLvp3xwVe2rOWGqYD+vlHr+TYUw2QDQc8e2vUTDrw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       '@oclif/core': '>= 3.0.0'
     dependencies:
       '@oclif/core': 3.26.6
       ansis: 3.2.0
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2293,6 +2293,18 @@ packages:
     dependencies:
       ms: 2.1.2
       supports-color: 8.1.1
+
+  /debug@4.3.5:
+    resolution: {integrity: sha512-pt0bNEmneDIvdL1Xsd9oDQ/wrQRkXDT4AUWlNZNPKvW5x/jyO9VFXkJUP07vQ2upmw5PlaITaPKc31jK13V+jg==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+    dependencies:
+      ms: 2.1.2
+    dev: true
 
   /decamelize@4.0.0:
     resolution: {integrity: sha512-9iE1PgSik9HeIIw2JO94IidnE3eBoQrFJ3w7sFuzSX4DpmZ3v5sZpUiV5Swcf6mQEF+Y0ru8Neo+p+nyh2J+hQ==}
