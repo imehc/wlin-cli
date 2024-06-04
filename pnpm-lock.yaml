@@ -12,8 +12,8 @@ dependencies:
     specifier: ^3.1.1
     version: 3.1.1(typescript@5.4.5)
   '@oclif/plugin-commands':
-    specifier: ^3.3.4
-    version: 3.3.4
+    specifier: ^4.0.1
+    version: 4.0.1(typescript@5.4.5)
   '@oclif/plugin-help':
     specifier: ^6.1.0
     version: 6.1.0(typescript@5.4.5)
@@ -634,12 +634,16 @@ packages:
       - typescript
     dev: false
 
-  /@oclif/plugin-commands@3.3.4:
-    resolution: {integrity: sha512-jjn24eE4gXY59Jmq6w48tPnH7WLJSt9QoDdJBcN4VLHqQlwkXpTllVKetCR0QG3pDt7ap1nl6kIRs/nAbbownw==}
+  /@oclif/plugin-commands@4.0.1(typescript@5.4.5):
+    resolution: {integrity: sha512-Ln7FcfoGN9cSIydqC0cU/6U4vF8x65lwZVagg3+xfWaq96VzAp68KQJ0RuzkehBa3InvME3bAmYB4yW0Dst3EA==}
     engines: {node: '>=18.0.0'}
     dependencies:
-      '@oclif/core': 3.26.9
+      '@oclif/core': 4.0.0-beta.15(typescript@5.4.5)
       lodash: 4.17.21
+      object-treeify: 4.0.1
+      tty-table: 4.2.3
+    transitivePeerDependencies:
+      - typescript
     dev: false
 
   /@oclif/plugin-help@6.1.0(typescript@5.4.5):
@@ -4878,6 +4882,11 @@ packages:
   /object-treeify@1.1.33:
     resolution: {integrity: sha512-EFVjAYfzWqWsBMRHPMAXLCDIJnpMhdWAqR7xG6M6a2cs6PMFpl/+Z20w9zDW4vkxOFfddegBKq9Rehd0bxWE7A==}
     engines: {node: '>= 10'}
+
+  /object-treeify@4.0.1:
+    resolution: {integrity: sha512-Y6tg5rHfsefSkfKujv2SwHulInROy/rCL5F4w0QOWxut8AnxYxf0YmNhTh95Zfyxpsudo66uqkux0ACFnyMSgQ==}
+    engines: {node: '>= 16'}
+    dev: false
 
   /object.assign@4.1.5:
     resolution: {integrity: sha512-byy+U7gp+FVwmyzKPYhW2h5l3crpmGsxl7X2s8y43IgxvG4g3QZ6CffDtsNQy1WsmZpQbO+ybo0AlW7TY6DcBQ==}
