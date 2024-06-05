@@ -12,8 +12,8 @@ dependencies:
     specifier: ^3.1.1
     version: 3.1.1(typescript@5.4.5)
   '@oclif/plugin-commands':
-    specifier: ^4.0.1
-    version: 4.0.1(typescript@5.4.5)
+    specifier: ^4.0.2
+    version: 4.0.2(typescript@5.4.5)
   '@oclif/plugin-help':
     specifier: ^6.1.0
     version: 6.1.0(typescript@5.4.5)
@@ -612,6 +612,31 @@ packages:
       - typescript
     dev: false
 
+  /@oclif/core@4.0.1(typescript@5.4.5):
+    resolution: {integrity: sha512-A+mOOjs5+iv1MUrIwYsdekwhFvjNPWYmS+Ovd6ZsPoP8XAa6YCc7P/omtkbGV4ojfj45p2hBpdnFUg+lOxqY0A==}
+    engines: {node: '>=18.0.0'}
+    dependencies:
+      ansi-escapes: 4.3.2
+      ansis: 3.2.0
+      clean-stack: 3.0.1
+      cli-spinners: 2.9.2
+      cosmiconfig: 9.0.0(typescript@5.4.5)
+      debug: 4.3.5(supports-color@8.1.1)
+      ejs: 3.1.10
+      get-package-type: 0.1.0
+      globby: 11.1.0
+      indent-string: 4.0.0
+      is-wsl: 2.2.0
+      minimatch: 9.0.4
+      string-width: 4.2.3
+      supports-color: 8.1.1
+      widest-line: 3.1.0
+      wordwrap: 1.0.0
+      wrap-ansi: 7.0.0
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
   /@oclif/plugin-autocomplete@3.1.1(typescript@5.4.5):
     resolution: {integrity: sha512-R5EpLD91pG1zzK6UppPleqp84e6NArMf3RS5+DAJQq8WkavvKlUZWfYEurthfjqx2sEyb5JMhJnD/wPtPbehBA==}
     engines: {node: '>=18.0.0'}
@@ -625,8 +650,8 @@ packages:
       - typescript
     dev: false
 
-  /@oclif/plugin-commands@4.0.1(typescript@5.4.5):
-    resolution: {integrity: sha512-Ln7FcfoGN9cSIydqC0cU/6U4vF8x65lwZVagg3+xfWaq96VzAp68KQJ0RuzkehBa3InvME3bAmYB4yW0Dst3EA==}
+  /@oclif/plugin-commands@4.0.2(typescript@5.4.5):
+    resolution: {integrity: sha512-hNhfsnBU/Emw9xHdpY+gGTC9zbWe6wP4sy65Gha9dZSCoZhMx8On8pbvF09myFIwdAMs7rWGmhDpTALTd4QANg==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@oclif/core': 4.0.1(typescript@5.4.5)
