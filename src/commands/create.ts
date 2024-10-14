@@ -142,7 +142,7 @@ export default class Create extends Command {
       const response = await inquirer
         .prompt([
           {
-            default: 'true',
+            default: false,
             message: 'Check whether a file with the same name exists in the directory',
             name: 'projectCover',
             type: 'confirm',
@@ -161,7 +161,7 @@ export default class Create extends Command {
     if (!template) {
       const responses = await inquirer.prompt([
         {
-          choices: templates.map((name) => ({name})),
+          choices: templates,
           message: 'select a template',
           name: 'template',
           type: 'list',
@@ -173,7 +173,7 @@ export default class Create extends Command {
     if (!origin) {
       const responses = await inquirer.prompt([
         {
-          choices: origins.map((name) => ({name})),
+          choices: origins,
           message: 'Select a warehouse source',
           name: 'origin',
           type: 'list',
