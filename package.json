@@ -1,6 +1,6 @@
 {
   "name": "wlin-cli",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "description": "Quickly create common templates",
   "keywords": [
     "oclif",
