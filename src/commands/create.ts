@@ -5,18 +5,20 @@ import {ensureDir, exists, remove} from 'fs-extra'
 import inquirer from 'inquirer'
 import {exec} from 'node:child_process'
 import path from 'node:path'
-import notifier from 'node-notifier'
+// import notifier from 'node-notifier'
 import ora from 'ora'
 import {rimraf} from 'rimraf'
 import {simpleGit} from 'simple-git'
 
 const templates = [/** 'next', */ 'react-ts', 'vue-ts'] as const
 const origins = ['github', 'gitee'] as const
+const manager = ['npm', 'yarn', 'pnpm', 'bun']
 
 type BaseConfig = {
   isRepeat?: boolean
   name: string
   origin: (typeof origins)[number]
+  pkgManager: (typeof manager)[number]
   targetDir: string
   template: (typeof templates)[number]
 }
@@ -30,6 +32,7 @@ export default class Create extends Command {
 
   static flags = {
     origin: Flags.string({options: origins}),
+    pkgManager: Flags.string({options: manager}),
     template: Flags.string({options: templates}),
   }
 
@@ -46,7 +49,7 @@ export default class Create extends Command {
     })
   }
 
-  private async createProject({isRepeat, name, origin, targetDir, template}: BaseConfig): Promise<void> {
+  private async createProject({isRepeat, name, origin, pkgManager, targetDir, template}: BaseConfig): Promise<void> {
     const initSpinner = ora(chalk.cyan('Create directory...\n'))
     initSpinner.start()
     if (isRepeat) {
@@ -61,25 +64,43 @@ export default class Create extends Command {
     await ensureDir(targetDir)
 
     try {
-      initSpinner.text = chalk.green('Download template\n')
+      initSpinner.text = chalk.green('Download template...\n')
       await this.downloadTemplate({origin, targetDir, template})
       await rimraf(`${targetDir}/.git`).catch(() => {})
       await rimraf(`${targetDir}/.github`).catch(() => {})
       exec(`cd ${targetDir} && npm pkg set name="${name}"`, (error) => {
         if (error) {
-          initSpinner.text = chalk.red(error)
-          initSpinner.fail()
+          initSpinner.stop()
+          initSpinner.fail(chalk.red(error))
         }
       })
-      notifier.notify({
-        message: 'downloading template completed!',
-        title: 'wlin-cli notification',
-      })
-      initSpinner.text = 'Initialization project completed.\n'
-      initSpinner.succeed()
     } catch (error) {
-      initSpinner.text = chalk.red(error)
-      initSpinner.fail()
+      initSpinner.stop()
+      initSpinner.fail(chalk.red(error))
+      return
+    }
+
+    try {
+      initSpinner.text = 'Install dependencies...\n'
+      exec(`cd ${targetDir} && ${pkgManager} install`, (error) => {
+        if (error) {
+          initSpinner.stop()
+          initSpinner.fail(chalk.red(error))
+          return
+        }
+
+        // console.log(`stdout: ${stdout}`);
+        // console.error(`stderr: ${stderr}`);
+        // notifier.notify({
+        //   message: 'Template initialization completed.',
+        //   title: 'wlin-cli notification',
+        // })
+        initSpinner.stop()
+        initSpinner.succeed('Template initialization completed.\n')
+      })
+    } catch {
+      initSpinner.stop()
+      initSpinner.fail('Installation of dependency failed.')
     }
   }
 
@@ -106,7 +127,7 @@ export default class Create extends Command {
   private async initConfig(): Promise<BaseConfig> {
     const {args, flags} = await this.parse(Create)
     let {name} = args
-    let {origin, template} = flags
+    let {origin, pkgManager, template} = flags
     let isRepeat = false
 
     if (!name) {
@@ -182,7 +203,19 @@ export default class Create extends Command {
       origin = responses.origin
     }
 
-    return {isRepeat, name, origin, targetDir, template} as BaseConfig
+    if (!pkgManager) {
+      const responses = await inquirer.prompt([
+        {
+          choices: manager,
+          message: 'Select a package manager',
+          name: 'pkgManager',
+          type: 'list',
+        },
+      ])
+      pkgManager = responses.pkgManager
+    }
+
+    return {isRepeat, name, origin, pkgManager, targetDir, template} as BaseConfig
   }
 
   private sleep(ms: number): Promise<void> {
