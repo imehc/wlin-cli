@@ -1,6 +1,9 @@
 wlin-cli
 =================
 
+[![Package Version](https://img.shields.io/npm/v/wlin-cli.svg)](https://www.npmjs.com/package/wlin-cli)
+[![Downloads](https://img.shields.io/npm/dm/wlin-cli.svg)](http://npm-stat.com/charts.html?package=wlin-cli&author=&from=&to=)
+
 Quickly create common templates
 
 <!-- toc -->
