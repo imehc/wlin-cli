@@ -183,7 +183,7 @@ export default class Create extends Command {
       const responses = await inquirer.prompt([
         {
           choices: templates,
-          message: 'select a template',
+          message: 'Select a template',
           name: 'template',
           type: 'list',
         },
