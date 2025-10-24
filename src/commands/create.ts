@@ -7,10 +7,12 @@ import {exec} from 'node:child_process'
 import {readdir} from 'node:fs/promises'
 import {tmpdir} from 'node:os'
 import path from 'node:path'
-// import notifier from 'node-notifier'
+import {promisify} from 'node:util'
 import ora from 'ora'
 import {rimraf} from 'rimraf'
 import {simpleGit} from 'simple-git'
+
+const execAsync = promisify(exec)
 
 // Gitee 仍然使用分支方式的模板列表
 const giteeTemplates = [/** 'next', */ 'react-ts', 'vue-ts'] as const
@@ -40,9 +42,14 @@ export default class Create extends Command {
   }
 
   // 跟踪临时目录以便清理
-  private tempDirs: string[] = []
   private isExiting = false
 
+  private tempDirs: string[] = []
+
+  /**
+   * 主运行方法
+   * @returns Promise that resolves when command completes
+   */
   public async run(): Promise<void> {
     // 检查 Node 版本
     if (!this.checkNodeVersion()) {
@@ -61,7 +68,7 @@ export default class Create extends Command {
       try {
         const config = await this.initConfig()
         await this.createProject(config)
-      } catch (error: any) {
+      } catch (error: unknown) {
         // 处理用户取消操作
         if (this.isUserCancellation(error)) {
           this.log(chalk.yellow('\n✖ Operation cancelled by user'))
@@ -77,7 +84,17 @@ export default class Create extends Command {
   }
 
   /**
+   * 添加临时目录到跟踪列表
+   * @param dir - 要添加的临时目录路径
+   * @returns void
+   */
+  private addTempDir(dir: string): void {
+    this.tempDirs.push(dir)
+  }
+
+  /**
    * 检查 Node 版本是否符合要求
+   * @returns 版本是否兼容
    */
   private checkNodeVersion(): boolean {
     const requiredVersion = '18.0.0'
@@ -96,187 +113,121 @@ export default class Create extends Command {
   }
 
   /**
-   * 比较版本号
+   * 清理所有临时目录
+   * @returns Promise that resolves when cleanup is complete
    */
-  private isVersionCompatible(current: string, required: string): boolean {
-    const currentParts = current.split('.').map(Number)
-    const requiredParts = required.split('.').map(Number)
+  private async cleanup(): Promise<void> {
+    await Promise.all(
+      this.tempDirs.map(async (dir) => {
+        try {
+          await rimraf(dir)
+        } catch {
+          // 忽略清理错误
+        }
+      }),
+    )
 
-    for (let i = 0; i < requiredParts.length; i++) {
-      if (currentParts[i] > requiredParts[i]) return true
-      if (currentParts[i] < requiredParts[i]) return false
-    }
-
-    return true
+    this.tempDirs = []
   }
 
   /**
-   * 设置退出信号处理器
+   * 创建退出信号处理函数
+   * @returns 退出处理函数
    */
-  private setupExitHandler(): void {
-    const exitHandler = async (signal: string) => {
+  private createExitHandler() {
+    return async (signal: string) => {
       if (this.isExiting) return
       this.isExiting = true
 
       this.log(chalk.yellow(`\n\nReceived ${signal}, cleaning up...`))
       await this.cleanup()
       this.log(chalk.green('✓ Cleanup completed'))
-      process.exit(0)
-    }
-
-    process.on('SIGINT', () => exitHandler('SIGINT'))
-    process.on('SIGTERM', () => exitHandler('SIGTERM'))
-  }
-
-  /**
-   * 检查是否为用户取消操作
-   */
-  private isUserCancellation(error: any): boolean {
-    // inquirer 在用户按 Ctrl+C 时会抛出这些错误
-    return (
-      error?.isTtyError ||
-      error?.message?.includes('User force closed') ||
-      error?.message?.includes('canceled') ||
-      error?.message?.includes('cancelled')
-    )
-  }
-
-  /**
-   * 清理所有临时目录
-   */
-  private async cleanup(): Promise<void> {
-    for (const dir of this.tempDirs) {
-      try {
-        await rimraf(dir)
-      } catch {
-        // 忽略清理错误
-      }
-    }
-
-    this.tempDirs = []
-  }
-
-  /**
-   * 添加临时目录到跟踪列表
-   */
-  private addTempDir(dir: string): void {
-    this.tempDirs.push(dir)
-  }
-
-  /**
-   * 从跟踪列表移除临时目录
-   */
-  private removeTempDir(dir: string): void {
-    const index = this.tempDirs.indexOf(dir)
-    if (index > -1) {
-      this.tempDirs.splice(index, 1)
+      throw new Error(`Process terminated by ${signal}`)
     }
   }
 
+  /**
+   * 创建项目
+   * @param config - 项目配置
+   * @returns Promise that resolves when project is created
+   */
   private async createProject({isRepeat, name, origin, pkgManager, targetDir, template}: BaseConfig): Promise<void> {
-    const initSpinner = ora(chalk.cyan('Create directory...\n'))
-    initSpinner.start()
-    if (isRepeat) {
-      try {
-        await remove(targetDir)
-        initSpinner.text = chalk.green('Remove the original directory success\n')
-      } catch (error) {
-        initSpinner.fail(chalk.red(`Failed to remove the original directory: ${error}\n`))
-      }
-    }
-
-    await ensureDir(targetDir)
+    const spinner = ora(chalk.cyan('Create directory...\n')).start()
 
     try {
-      initSpinner.text = chalk.green('Download template...\n')
+      if (isRepeat) {
+        await remove(targetDir)
+        spinner.text = chalk.green('Remove the original directory success\n')
+      }
+
+      await ensureDir(targetDir)
+
+      spinner.text = chalk.green('Download template...\n')
       await this.downloadTemplate({origin, targetDir, template})
       await rimraf(`${targetDir}/.git`).catch(() => {})
       await rimraf(`${targetDir}/.github`).catch(() => {})
-      exec(`cd ${targetDir} && npm pkg set name="${name}"`, (error) => {
-        if (error) {
-          initSpinner.stop()
-          initSpinner.fail(chalk.red(error))
-        }
-      })
+
+      await execAsync(`npm pkg set name="${name}"`, {cwd: targetDir})
+
+      spinner.text = 'Install dependencies...\n'
+      await execAsync(`${pkgManager} install`, {cwd: targetDir})
+
+      spinner.succeed('Template initialization completed.\n')
     } catch (error) {
-      initSpinner.stop()
-      initSpinner.fail(chalk.red(error))
-      return
-    }
-
-    try {
-      initSpinner.text = 'Install dependencies...\n'
-      exec(`cd ${targetDir} && ${pkgManager} install`, (error) => {
-        if (error) {
-          initSpinner.stop()
-          initSpinner.fail(chalk.red(error))
-          return
-        }
-
-        // console.log(`stdout: ${stdout}`);
-        // console.error(`stderr: ${stderr}`);
-        // notifier.notify({
-        //   message: 'Template initialization completed.',
-        //   title: 'wlin-cli notification',
-        // })
-        initSpinner.stop()
-        initSpinner.succeed('Template initialization completed.\n')
-      })
-    } catch {
-      initSpinner.stop()
-      initSpinner.fail('Installation of dependency failed.')
+      spinner.fail(chalk.red(error instanceof Error ? error.message : String(error)))
+      throw error
     }
   }
 
+  /**
+   * 下载模板
+   * @param config - 模板配置信息
+   * @returns Promise that resolves when download is complete
+   */
   private async downloadTemplate({
     origin,
     targetDir,
     template,
   }: Pick<BaseConfig, 'origin' | 'targetDir' | 'template'>): Promise<void> {
-    switch (origin) {
-      case 'gitee': {
-        const basicRemoteUrl = 'https://gitee.com/imehc/fronted-template.git'
-        await simpleGit().clone(basicRemoteUrl, targetDir, ['--branch', template])
-        break
-      }
+    if (origin === 'gitee') {
+      const basicRemoteUrl = 'https://gitee.com/imehc/fronted-template.git'
+      await simpleGit().clone(basicRemoteUrl, targetDir, ['--branch', template])
+      return
+    }
 
-      default: {
-        // GitHub: 克隆 main 分支，然后只保留指定模板文件夹
-        const basicRemoteUrl = 'https://github.com/imehc/fronted-template.git'
-        const tmpDir = path.join(tmpdir(), `wlin-template-${Date.now()}`)
+    // GitHub: 克隆 main 分支，然后只保留指定模板文件夹
+    const basicRemoteUrl = 'https://github.com/imehc/fronted-template.git'
+    const tmpDir = path.join(tmpdir(), `wlin-template-${Date.now()}`)
 
-        try {
-          // 添加到临时目录跟踪
-          this.addTempDir(tmpDir)
+    try {
+      // 添加到临时目录跟踪
+      this.addTempDir(tmpDir)
 
-          // 克隆整个 main 分支
-          await simpleGit().clone(basicRemoteUrl, tmpDir, ['--depth', '1', '--branch', 'main'])
+      // 克隆整个 main 分支
+      await simpleGit().clone(basicRemoteUrl, tmpDir, ['--depth', '1', '--branch', 'main'])
 
-          // 确保目标目录存在
-          await ensureDir(targetDir)
+      // 确保目标目录存在
+      await ensureDir(targetDir)
 
-          // 复制指定模板文件夹的内容到目标目录
-          const templateSrcDir = path.join(tmpDir, template)
-          await copy(templateSrcDir, targetDir)
+      // 复制指定模板文件夹的内容到目标目录
+      const templateSrcDir = path.join(tmpDir, template)
+      await copy(templateSrcDir, targetDir)
 
-          // 清理临时目录
-          await rimraf(tmpDir)
-          this.removeTempDir(tmpDir)
-        } catch (error) {
-          // 清理临时目录
-          await rimraf(tmpDir).catch(() => {})
-          this.removeTempDir(tmpDir)
-          throw error
-        }
-
-        break
-      }
+      // 清理临时目录
+      await rimraf(tmpDir)
+      this.removeTempDir(tmpDir)
+    } catch (error) {
+      // 清理临时目录
+      await rimraf(tmpDir).catch(() => {})
+      this.removeTempDir(tmpDir)
+      throw error
     }
   }
 
   /**
    * 从 GitHub main 分支动态获取可用的模板列表
    * 检测所有包含 package.json 的一级子目录
+   * @returns Promise that resolves with array of template names
    */
   private async fetchGithubTemplates(): Promise<string[]> {
     const tmpDir = path.join(tmpdir(), `wlin-template-list-${Date.now()}`)
@@ -294,15 +245,17 @@ export default class Create extends Command {
       const entries = await readdir(tmpDir, {withFileTypes: true})
 
       // 筛选出包含 package.json 的目录
-      const templates: string[] = []
-      for (const entry of entries) {
-        if (entry.isDirectory() && !entry.name.startsWith('.')) {
-          const pkgPath = path.join(tmpDir, entry.name, 'package.json')
-          if (await pathExists(pkgPath)) {
-            templates.push(entry.name)
-          }
-        }
-      }
+      const templateChecks = await Promise.all(
+        entries
+          .filter((entry) => entry.isDirectory() && !entry.name.startsWith('.'))
+          .map(async (entry) => {
+            const pkgPath = path.join(tmpDir, entry.name, 'package.json')
+            const exists = await pathExists(pkgPath)
+            return exists ? entry.name : null
+          }),
+      )
+
+      const templates = templateChecks.filter((name): name is string => name !== null)
 
       // 清理临时目录
       await rimraf(tmpDir)
@@ -318,6 +271,10 @@ export default class Create extends Command {
     }
   }
 
+  /**
+   * 初始化项目配置
+   * @returns Promise that resolves with configuration
+   */
   private async initConfig(): Promise<BaseConfig> {
     const {args, flags} = await this.parse(Create)
     let {name} = args
@@ -330,21 +287,7 @@ export default class Create extends Command {
           message: 'enter a project name:',
           name: 'name',
           type: 'input',
-          validate(value) {
-            if (value.trim().length === 0) {
-              return 'The string cannot be empty. Please re-enter it.'
-            }
-
-            if (value.includes(' ')) {
-              return 'The string cannot contain Spaces, please re-enter.'
-            }
-
-            if (value.length > 16) {
-              return 'The string cannot exceed 16 characters, please shorten your input.'
-            }
-
-            return true
-          },
+          validate: this.validateProjectName,
         },
       ])
       name = responses.name
@@ -384,14 +327,7 @@ export default class Create extends Command {
     }
 
     // 根据 origin 获取模板列表
-    let availableTemplates: string[]
-    if (origin === 'github') {
-      // GitHub: 动态获取模板列表
-      availableTemplates = await this.fetchGithubTemplates()
-    } else {
-      // Gitee: 使用预定义的模板列表
-      availableTemplates = [...giteeTemplates]
-    }
+    const availableTemplates = origin === 'github' ? await this.fetchGithubTemplates() : [...giteeTemplates]
 
     // 选择模板
     if (!template) {
@@ -419,5 +355,82 @@ export default class Create extends Command {
     }
 
     return {isRepeat, name, origin, pkgManager, targetDir, template} as BaseConfig
+  }
+
+  /**
+   * 检查是否为用户取消操作
+   * @param error - 错误对象
+   * @returns 是否为用户取消操作
+   */
+  private isUserCancellation(error: unknown): boolean {
+    const err = error as {isTtyError?: boolean; message?: string}
+    // inquirer 在用户按 Ctrl+C 时会抛出这些错误
+    return (
+      Boolean(err?.isTtyError) ||
+      Boolean(err?.message?.includes('User force closed')) ||
+      Boolean(err?.message?.includes('canceled')) ||
+      Boolean(err?.message?.includes('cancelled'))
+    )
+  }
+
+  /**
+   * 比较版本号
+   * @param current - 当前版本
+   * @param required - 要求的版本
+   * @returns 版本是否兼容
+   */
+  private isVersionCompatible(current: string, required: string): boolean {
+    const currentParts = current.split('.').map(Number)
+    const requiredParts = required.split('.').map(Number)
+
+    for (const [index, requiredPart] of requiredParts.entries()) {
+      if (currentParts[index] > requiredPart) return true
+      if (currentParts[index] < requiredPart) return false
+    }
+
+    return true
+  }
+
+  /**
+   * 从跟踪列表移除临时目录
+   * @param dir - 要移除的临时目录路径
+   * @returns void
+   */
+  private removeTempDir(dir: string): void {
+    const index = this.tempDirs.indexOf(dir)
+    if (index > -1) {
+      this.tempDirs.splice(index, 1)
+    }
+  }
+
+  /**
+   * 设置退出信号处理器
+   * @returns void
+   */
+  private setupExitHandler(): void {
+    const exitHandler = this.createExitHandler()
+    process.on('SIGINT', () => exitHandler('SIGINT'))
+    process.on('SIGTERM', () => exitHandler('SIGTERM'))
+  }
+
+  /**
+   * 验证项目名称
+   * @param value - 项目名称
+   * @returns 验证结果
+   */
+  private validateProjectName(value: string): boolean | string {
+    if (value.trim().length === 0) {
+      return 'The string cannot be empty. Please re-enter it.'
+    }
+
+    if (value.includes(' ')) {
+      return 'The string cannot contain Spaces, please re-enter.'
+    }
+
+    if (value.length > 16) {
+      return 'The string cannot exceed 16 characters, please shorten your input.'
+    }
+
+    return true
   }
 }
