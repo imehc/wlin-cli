@@ -16,7 +16,7 @@ $ npm install -g wlin-cli
 $ wlin-cli COMMAND
 running command...
 $ wlin-cli (--version)
-wlin-cli/0.3.16 darwin-x64 node-v20.11.1
+wlin-cli/0.4.0 darwin-x64 node-v20.19.4
 $ wlin-cli --help [COMMAND]
 USAGE
   $ wlin-cli COMMAND

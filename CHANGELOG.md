@@ -1,3 +1,12 @@
+# [0.4.0](https://github.com/imehc/wlin-cli/compare/v0.3.16...v0.4.0) (2025-10-24)
+
+
+### Performance Improvements
+
+* :zap: 调整获取github源模版流程 ([e3c50ec](https://github.com/imehc/wlin-cli/commit/e3c50ecc6620c631182aa16b585ac9a9e2544f95))
+
+
+
 ## [0.3.16](https://github.com/imehc/wlin-cli/compare/v0.3.15...v0.3.16) (2024-11-26)
 
 
