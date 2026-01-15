@@ -1,7 +1,10 @@
 name: Auto Merge
 
 on:
-  pull_request:
+  workflow_run:
+    workflows: ["Check Errors"]
+    types:
+      - completed
 
 jobs:
   automerge:
