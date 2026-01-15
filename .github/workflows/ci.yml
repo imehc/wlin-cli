@@ -1,4 +1,4 @@
-name: Check Errors
+name: CI
 
 on:
   push:
@@ -84,3 +84,18 @@ jobs:
       #   uses: JS-DevTools/npm-publish@v3
       #   with:
       #     token: ${{ secrets.NPM_TOKEN }}
+
+  automerge:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - uses: fastify/github-action-merge-dependabot@v3
+      # 或
+      # - uses: actions/checkout@v4
+      # - uses: ahmadnassri/action-dependabot-auto-merge@v2
+        with:
+          # target: minor
+          github-token: ${{ secrets.GITHUB_TOKEN }}
