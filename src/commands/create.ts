@@ -14,16 +14,17 @@ import {simpleGit} from 'simple-git'
 
 const execAsync = promisify(exec)
 
-// Gitee 仍然使用分支方式的模板列表
-const giteeTemplates = [/** 'next', */ 'react-ts', 'vue-ts'] as const
 const origins = ['github', 'gitee'] as const
-const manager = ['npm', 'yarn', 'pnpm', 'bun']
+
+const remoteUrls: Record<(typeof origins)[number], string> = {
+  gitee: 'https://gitee.com/imehc/fronted-template.git',
+  github: 'https://github.com/imehc/fronted-template.git',
+}
 
 type BaseConfig = {
   isRepeat?: boolean
   name: string
   origin: (typeof origins)[number]
-  pkgManager: (typeof manager)[number]
   targetDir: string
   template: string
 }
@@ -37,7 +38,6 @@ export default class Create extends Command {
 
   static flags = {
     origin: Flags.string({options: origins}),
-    pkgManager: Flags.string({options: manager}),
     template: Flags.string(),
   }
 
@@ -151,7 +151,7 @@ export default class Create extends Command {
    * @param config - 项目配置
    * @returns Promise that resolves when project is created
    */
-  private async createProject({isRepeat, name, origin, pkgManager, targetDir, template}: BaseConfig): Promise<void> {
+  private async createProject({isRepeat, name, origin, targetDir, template}: BaseConfig): Promise<void> {
     const spinner = ora(chalk.cyan('Create directory...\n')).start()
 
     try {
@@ -169,10 +169,12 @@ export default class Create extends Command {
 
       await execAsync(`npm pkg set name="${name}"`, {cwd: targetDir})
 
-      spinner.text = 'Install dependencies...\n'
-      await execAsync(`${pkgManager} install`, {cwd: targetDir})
-
       spinner.succeed('Template initialization completed.\n')
+
+      this.log(chalk.green(`\nProject ${chalk.bold(name)} created successfully!`))
+      this.log(chalk.cyan('\nNext steps:'))
+      this.log(chalk.white(`  cd ${name}`))
+      this.log(chalk.white('  npm install  # or yarn / pnpm install / bun install'))
     } catch (error) {
       spinner.fail(chalk.red(error instanceof Error ? error.message : String(error)))
       throw error
@@ -189,14 +191,7 @@ export default class Create extends Command {
     targetDir,
     template,
   }: Pick<BaseConfig, 'origin' | 'targetDir' | 'template'>): Promise<void> {
-    if (origin === 'gitee') {
-      const basicRemoteUrl = 'https://gitee.com/imehc/fronted-template.git'
-      await simpleGit().clone(basicRemoteUrl, targetDir, ['--branch', template])
-      return
-    }
-
-    // GitHub: 克隆 main 分支，然后只保留指定模板文件夹
-    const basicRemoteUrl = 'https://github.com/imehc/fronted-template.git'
+    const basicRemoteUrl = remoteUrls[origin]
     const tmpDir = path.join(tmpdir(), `wlin-template-${Date.now()}`)
 
     try {
@@ -225,20 +220,21 @@ export default class Create extends Command {
   }
 
   /**
-   * 从 GitHub main 分支动态获取可用的模板列表
+   * 从远程仓库 main 分支动态获取可用的模板列表
    * 检测所有包含 package.json 的一级子目录
+   * @param origin - 仓库源
    * @returns Promise that resolves with array of template names
    */
-  private async fetchGithubTemplates(): Promise<string[]> {
+  private async fetchTemplates(origin: (typeof origins)[number]): Promise<string[]> {
     const tmpDir = path.join(tmpdir(), `wlin-template-list-${Date.now()}`)
-    const spinner = ora(chalk.cyan('Fetching available templates from GitHub...')).start()
+    const spinner = ora(chalk.cyan(`Fetching available templates from ${origin}...`)).start()
 
     try {
       // 添加到临时目录跟踪
       this.addTempDir(tmpDir)
 
       // 克隆仓库到临时目录
-      const remoteUrl = 'https://github.com/imehc/fronted-template.git'
+      const remoteUrl = remoteUrls[origin]
       await simpleGit().clone(remoteUrl, tmpDir, ['--depth', '1', '--branch', 'main'])
 
       // 读取目录
@@ -264,7 +260,7 @@ export default class Create extends Command {
 
       return templates
     } catch (error) {
-      spinner.fail(chalk.red('Failed to fetch templates from GitHub'))
+      spinner.fail(chalk.red(`Failed to fetch templates from ${origin}`))
       await rimraf(tmpDir).catch(() => {})
       this.removeTempDir(tmpDir)
       throw error
@@ -278,7 +274,7 @@ export default class Create extends Command {
   private async initConfig(): Promise<BaseConfig> {
     const {args, flags} = await this.parse(Create)
     let {name} = args
-    let {origin, pkgManager, template} = flags
+    let {origin, template} = flags
     let isRepeat = false
 
     if (!name) {
@@ -327,7 +323,7 @@ export default class Create extends Command {
     }
 
     // 根据 origin 获取模板列表
-    const availableTemplates = origin === 'github' ? await this.fetchGithubTemplates() : [...giteeTemplates]
+    const availableTemplates = await this.fetchTemplates(origin as (typeof origins)[number])
 
     // 选择模板
     if (!template) {
@@ -342,19 +338,7 @@ export default class Create extends Command {
       template = responses.template
     }
 
-    if (!pkgManager) {
-      const responses = await inquirer.prompt([
-        {
-          choices: manager,
-          message: 'Select a package manager',
-          name: 'pkgManager',
-          type: 'list',
-        },
-      ])
-      pkgManager = responses.pkgManager
-    }
-
-    return {isRepeat, name, origin, pkgManager, targetDir, template} as BaseConfig
+    return {isRepeat, name, origin, targetDir, template} as BaseConfig
   }
 
   /**
