@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -39,7 +43,7 @@ jobs:
         if: steps.check.outputs.changed == 'true'
         uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'pnpm'
           cache-dependency-path: 'pnpm-lock.yaml'
 
@@ -54,6 +58,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-
 
+      - name: Upgrade npm for Trusted Publishing
+        if: steps.check.outputs.changed == 'true'
+        run: npm install -g npm@latest
+
       # 安装依赖，包括我们的 semantic-release 全套
       - name: Install dependencies
         if: steps.check.outputs.changed == 'true'
@@ -66,10 +74,9 @@ jobs:
         run: |
           pnpm run build
 
-      - uses: JS-DevTools/npm-publish@v4
+      - name: Publish to npm
         if: steps.check.outputs.changed == 'true'
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --provenance --access public
 
       # # 执行 semantic-release 发布包
       # - name: Release
