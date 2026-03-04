@@ -8,7 +8,10 @@
   ],
   "homepage": "https://github.com/imehc/wlin-cli",
   "bugs": "https://github.com/imehc/wlin-cli/issues",
-  "repository": "https://github.com/imehc/wlin-cli",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imehc/wlin-cli.git"
+  },
   "license": "MIT",
   "author": "imehc",
   "type": "module",
@@ -16,7 +19,7 @@
   "main": "",
   "types": "dist/index.d.ts",
   "bin": {
-    "wlin-cli": "./bin/run.js"
+    "wlin-cli": "bin/run.js"
   },
   "files": [
     "/bin",
