@@ -1,3 +1,12 @@
+## [0.4.2](https://github.com/imehc/wlin-cli/compare/v0.4.1...v0.4.2) (2026-03-04)
+
+
+### Bug Fixes
+
+* :bug: 调整gitee环境模版获取流程 ([e90595c](https://github.com/imehc/wlin-cli/commit/e90595ccfc0a31b42d56c3cce3e91aed6288ee78))
+
+
+
 ## [0.4.1](https://github.com/imehc/wlin-cli/compare/v0.3.16...v0.4.1) (2025-10-24)
 
 
