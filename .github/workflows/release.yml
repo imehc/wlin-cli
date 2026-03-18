@@ -33,7 +33,7 @@ jobs:
         if: steps.check.outputs.changed == 'false'
         run: 'echo "No version change :/"'
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v5
         if: steps.check.outputs.changed == 'true'
         with:
           version: 9 
