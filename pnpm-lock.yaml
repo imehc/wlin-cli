@@ -30,8 +30,8 @@ importers:
         specifier: ^4.7.33
         version: 4.7.33
       '@oclif/plugin-warn-if-update-available':
-        specifier: ^3.1.19
-        version: 3.1.19
+        specifier: ^3.1.61
+        version: 3.1.61
       chalk:
         specifier: ^5.3.0
         version: 5.3.0
@@ -823,8 +823,8 @@ packages:
     resolution: {integrity: sha512-ygTzGkqF+EPOMx30RGs9R2Kyyn3pFXpacihX0NCzkZDfljOdbESfEd5usc9iod9gxasouqwoSIFm9Tdb4zMHNA==}
     engines: {node: '>=18.0.0'}
 
-  '@oclif/plugin-warn-if-update-available@3.1.19':
-    resolution: {integrity: sha512-1yanRA5KGPaQvBea8pQRa32mF4cQHqkgs3Z9ww+LsOm052RkjLNvuHuwx8mn6z4wcg8M1Om1/XJ+/mZaAApvLw==}
+  '@oclif/plugin-warn-if-update-available@3.1.61':
+    resolution: {integrity: sha512-4XcrTxcCs+brR/eZ0BPeuiREiH3USlJiaHbUqPhnIBuyxhhUSYVd8ZO6s5MQN7AXJq4SMQ+B5zLaHq+ep/afIw==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/prettier-config@0.2.1':
@@ -906,6 +906,10 @@ packages:
 
   '@pnpm/npm-conf@2.2.2':
     resolution: {integrity: sha512-UA91GwWPhFExt3IizW6bOeY/pQ0BkuNwKjk9iQW9KqxluGCrg4VenZ0/L+2Y0+ZOtme72EVvg6v0zo3AMQRCeA==}
+    engines: {node: '>=12'}
+
+  '@pnpm/npm-conf@3.0.2':
+    resolution: {integrity: sha512-h104Kh26rR8tm+a3Qkc5S4VLYint3FE48as7+/5oCEcKR2idC/pF1G6AhIXKI+eHPJa/3J9i5z0Al47IeGHPkA==}
     engines: {node: '>=12'}
 
   '@rtsao/scc@1.1.0':
@@ -2261,6 +2265,9 @@ packages:
 
   error-ex@1.3.2:
     resolution: {integrity: sha512-7dFHNmqeFSEt2ZBsCriorKnn3Z2pj+fd9kmI6QoWw4//DL+icEBfc0U7qJCisqrTsKTjw4fNFy2pW9OqStD84g==}
+
+  error-ex@1.3.4:
+    resolution: {integrity: sha512-sqQamAnR14VgCr1A618A3sGrygcpK+HEbenA/HiEAkkUwcZIIB/tgWqHFxWgOyDh4nB4JCRimh79dR5Ywc9MDQ==}
 
   es-abstract@1.24.2:
     resolution: {integrity: sha512-2FpH9Q5i2RRwyEP1AylXe6nYLR5OhaJTZwmlcP0dL/+JCbgg7yyEo/sEK6HeGZRf3dFpWwThaRHVApXSkW3xeg==}
@@ -4349,6 +4356,10 @@ packages:
 
   registry-auth-token@5.0.2:
     resolution: {integrity: sha512-o/3ikDxtXaA59BmZuZrJZDJv8NMDGSj+6j6XaeBmHw8eY1i1qd9+6H+LjVvQXx3HN6aRCGa1cUdJ9RaJZUugnQ==}
+    engines: {node: '>=14'}
+
+  registry-auth-token@5.1.1:
+    resolution: {integrity: sha512-P7B4+jq8DeD2nMsAcdfaqHbssgHtZ7Z5+++a5ask90fvmJ8p5je4mOa+wzu+DB4vQ5tdJV/xywY+UnVFeQLV5Q==}
     engines: {node: '>=14'}
 
   regjsparser@0.10.0:
@@ -6495,14 +6506,14 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@oclif/plugin-warn-if-update-available@3.1.19':
+  '@oclif/plugin-warn-if-update-available@3.1.61':
     dependencies:
       '@oclif/core': 4.10.6
-      ansis: 3.3.2
-      debug: 4.3.7(supports-color@8.1.1)
+      ansis: 3.17.0
+      debug: 4.4.3(supports-color@8.1.1)
       http-call: 5.3.0
-      lodash: 4.17.21
-      registry-auth-token: 5.0.2
+      lodash: 4.18.1
+      registry-auth-token: 5.1.1
     transitivePeerDependencies:
       - supports-color
 
@@ -6618,6 +6629,12 @@ snapshots:
       graceful-fs: 4.2.10
 
   '@pnpm/npm-conf@2.2.2':
+    dependencies:
+      '@pnpm/config.env-replace': 1.1.0
+      '@pnpm/network.ca-file': 1.0.2
+      config-chain: 1.1.13
+
+  '@pnpm/npm-conf@3.0.2':
     dependencies:
       '@pnpm/config.env-replace': 1.1.0
       '@pnpm/network.ca-file': 1.0.2
@@ -8170,6 +8187,10 @@ snapshots:
     dependencies:
       is-arrayish: 0.2.1
 
+  error-ex@1.3.4:
+    dependencies:
+      is-arrayish: 0.2.1
+
   es-abstract@1.24.2:
     dependencies:
       array-buffer-byte-length: 1.0.2
@@ -8429,7 +8450,7 @@ snapshots:
       indent-string: 4.0.0
       is-builtin-module: 3.2.1
       jsesc: 3.0.2
-      lodash: 4.17.21
+      lodash: 4.18.1
       pluralize: 8.0.0
       read-pkg-up: 7.0.1
       regexp-tree: 0.1.27
@@ -9986,7 +10007,7 @@ snapshots:
       '@oclif/core': 4.10.6
       '@oclif/plugin-help': 6.2.15
       '@oclif/plugin-not-found': 3.2.81(@types/node@25.6.0)
-      '@oclif/plugin-warn-if-update-available': 3.1.19
+      '@oclif/plugin-warn-if-update-available': 3.1.61
       async-retry: 1.3.3
       chalk: 4.1.2
       change-case: 4.1.2
@@ -10160,7 +10181,7 @@ snapshots:
 
   parse-json@4.0.0:
     dependencies:
-      error-ex: 1.3.2
+      error-ex: 1.3.4
       json-parse-better-errors: 1.0.2
 
   parse-json@5.2.0:
@@ -10396,6 +10417,10 @@ snapshots:
   registry-auth-token@5.0.2:
     dependencies:
       '@pnpm/npm-conf': 2.2.2
+
+  registry-auth-token@5.1.1:
+    dependencies:
+      '@pnpm/npm-conf': 3.0.2
 
   regjsparser@0.10.0:
     dependencies:
