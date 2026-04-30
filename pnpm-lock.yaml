@@ -70,8 +70,8 @@ importers:
         specifier: ^0.2.1
         version: 0.2.1
       '@oclif/test':
-        specifier: ^4.0.9
-        version: 4.0.9(@oclif/core@4.10.6)
+        specifier: ^4.1.18
+        version: 4.1.18(@oclif/core@4.10.6)
       '@semantic-release/changelog':
         specifier: ^6.0.3
         version: 6.0.3(semantic-release@25.0.1(typescript@5.6.3))
@@ -925,8 +925,8 @@ packages:
     resolution: {integrity: sha512-tIW7JTfO/t19cfOZofxEi16GAV12osvuSwdDHQ6ltIYtNeDyT8vJqdqo5NmyKNNwUy6V1DoGsVhJtPTFabR4hg==}
     engines: {node: '>=18.0.0'}
 
-  '@oclif/test@4.0.9':
-    resolution: {integrity: sha512-xDGBFBNE6ckoBT9EhMi6ZvwAaEeJRGvRmn2qZWujJl9EJ56a72KHZsvTJVgl2p/AQ2vZ1UH06YZ440GOnjExzQ==}
+  '@oclif/test@4.1.18':
+    resolution: {integrity: sha512-SIy/8x8OHKh5Z32aS8jpzTDc+FC9531mMyypoH5HiZ0vXNjKJ9+SpbW4nYK2c/X44WcPdmjIImStZ/Wgc2zZnQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       '@oclif/core': '>= 3.0.0'
@@ -6149,7 +6149,7 @@ snapshots:
   '@eslint/eslintrc@2.1.4':
     dependencies:
       ajv: 6.12.6
-      debug: 4.3.7
+      debug: 4.4.3(supports-color@8.1.1)
       espree: 9.6.1
       globals: 13.24.0
       ignore: 5.3.1
@@ -6165,7 +6165,7 @@ snapshots:
   '@humanwhocodes/config-array@0.13.0':
     dependencies:
       '@humanwhocodes/object-schema': 2.0.3
-      debug: 4.3.7
+      debug: 4.4.3(supports-color@8.1.1)
       minimatch: 3.1.2
     transitivePeerDependencies:
       - supports-color
@@ -6666,11 +6666,11 @@ snapshots:
       - react-devtools-core
       - utf-8-validate
 
-  '@oclif/test@4.0.9(@oclif/core@4.10.6)':
+  '@oclif/test@4.1.18(@oclif/core@4.10.6)':
     dependencies:
       '@oclif/core': 4.10.6
-      ansis: 3.3.2
-      debug: 4.3.7
+      ansis: 3.17.0
+      debug: 4.4.3(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
