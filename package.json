@@ -70,7 +70,7 @@
     "@oclif/plugin-plugins": "^5.4.15",
     "@oclif/plugin-update": "^4.7.33",
     "@oclif/plugin-warn-if-update-available": "^3.1.61",
-    "chalk": "^5.3.0",
+    "chalk": "^5.6.2",
     "figlet": "^1.11.0",
     "fs-extra": "^11.3.4",
     "inquirer": "^13.4.2",
