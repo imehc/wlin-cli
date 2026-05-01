@@ -115,8 +115,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0(conventional-commits-filter@5.0.0)
       cz-git:
-        specifier: ^1.10.1
-        version: 1.10.1
+        specifier: ^1.13.0
+        version: 1.13.0
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
@@ -2137,8 +2137,8 @@ packages:
     resolution: {integrity: sha512-U466fIzU5U22eES5lTNiNbZ+d8dfcHcssH4o7QsdWaCcRs/feIPCxKYSWkYBNs5mny7MvEfwpTLWjvbm94hecw==}
     engines: {node: '>= 10'}
 
-  cz-git@1.10.1:
-    resolution: {integrity: sha512-pBudDYUEqSOgt5cAlAk6BDs/h99lxfiii+1KCxfuVNOgcpn+yz7AejDjdBEJ+XDt7MOeAvcpYW3gi7C7il+IFA==}
+  cz-git@1.13.0:
+    resolution: {integrity: sha512-oTxNSypCvhfHJF7KmnO8lSDup4lYa/s6bbF1700vyONepDIMTcMMXQweSxE/7ANIm7hcv1ckz4HLitZNM02fCw==}
     engines: {node: '>=v12.20.0'}
 
   data-uri-to-buffer@6.0.2:
@@ -7984,7 +7984,7 @@ snapshots:
       - '@types/node'
       - typescript
 
-  cz-git@1.10.1: {}
+  cz-git@1.13.0: {}
 
   data-uri-to-buffer@6.0.2: {}
 
