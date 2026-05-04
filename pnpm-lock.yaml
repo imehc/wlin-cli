@@ -27,8 +27,8 @@ importers:
         specifier: ^5.4.15
         version: 5.4.15
       '@oclif/plugin-update':
-        specifier: ^4.7.33
-        version: 4.7.33
+        specifier: ^4.7.35
+        version: 4.7.35
       '@oclif/plugin-warn-if-update-available':
         specifier: ^3.1.61
         version: 3.1.61
@@ -894,8 +894,8 @@ packages:
     resolution: {integrity: sha512-0cnTFaRWdXkWgKTrwgjoggcq/A3MaIl1GkDs3BFFjesYlFEs5Fb2HcN42rY+2ja4jBkXrjXBkLS+9faAtdCH6A==}
     engines: {node: '>=18.0.0'}
 
-  '@oclif/plugin-update@4.7.33':
-    resolution: {integrity: sha512-ygTzGkqF+EPOMx30RGs9R2Kyyn3pFXpacihX0NCzkZDfljOdbESfEd5usc9iod9gxasouqwoSIFm9Tdb4zMHNA==}
+  '@oclif/plugin-update@4.7.35':
+    resolution: {integrity: sha512-HZ+G8QpSoI9khWqkBeMVV8b4o3NF5x4Bz8MXJA/Ys9PeQJGX73GeLlL3XseLkq3ui9IEGWjwL0qm3ld257CzdA==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/plugin-warn-if-update-available@3.1.61':
@@ -909,8 +909,8 @@ packages:
     resolution: {integrity: sha512-zcH/k/81YIZTOE9O+Xm0nmn57Rfg2csQnFb/8u1B3Y7iUzYw0vsl+nI2Jtk0BaiX7JJfxAqas9kRzJazvFdoGA==}
     engines: {node: '>=18.0.0'}
 
-  '@oclif/table@0.5.4':
-    resolution: {integrity: sha512-tIW7JTfO/t19cfOZofxEi16GAV12osvuSwdDHQ6ltIYtNeDyT8vJqdqo5NmyKNNwUy6V1DoGsVhJtPTFabR4hg==}
+  '@oclif/table@0.5.6':
+    resolution: {integrity: sha512-W0SlIIkcqYxRSbZVw+VnFPT6hStjm5OoMduli35569OXezBPS92yNsoIA9jAuAt3lVIGlnUIetnAUUjs+yLHKg==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/test@4.1.18':
@@ -1721,8 +1721,8 @@ packages:
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
 
-  basic-ftp@5.3.0:
-    resolution: {integrity: sha512-5K9eNNn7ywHPsYnFwjKgYH8Hf8B5emh7JKcPaVjjrMJFQQwGpwowEnZNEtHs7DfR7hCZsmaK3VA4HUK0YarT+w==}
+  basic-ftp@5.3.1:
+    resolution: {integrity: sha512-bopVNp6ugyA150DDuZfPFdt1KZ5a94ZDiwX4hMgZDzF+GttD80lEy8kj98kbyhLXnPvhtIo93mdnLIjpCAeeOw==}
     engines: {node: '>=10.0.0'}
 
   before-after-hook@4.0.0:
@@ -3139,8 +3139,8 @@ packages:
   inversify@6.1.4:
     resolution: {integrity: sha512-PbxrZH/gTa1fpPEEGAjJQzK8tKMIp5gRg6EFNJlCtzUcycuNdmhv3uk5P8Itm/RIjgHJO16oQRLo9IHzQN51bA==}
 
-  ip-address@10.1.0:
-    resolution: {integrity: sha512-XXADHxXmvT9+CRxhXg56LJovE+bmWnEWB78LB83VZTprKTmaC5QfruXocxzTZ2Kl0DNwKuBdlIhjL8LeY8Sf8Q==}
+  ip-address@10.2.0:
+    resolution: {integrity: sha512-/+S6j4E9AHvW9SWMSEY9Xfy66O5PWvVEJ08O0y5JGyEKQpojb0K0GKpz/v5HJ/G0vi3D2sjGK78119oXZeE0qA==}
     engines: {node: '>= 12'}
 
   is-arguments@1.2.0:
@@ -4642,8 +4642,8 @@ packages:
     resolution: {integrity: sha512-HehCEsotFqbPW9sJ8WVYB6UbmIMv7kUUORIF2Nncq4VQvBfNBLibW9YZR5dlYCSUhwcD628pRllm7n+E+YTzJw==}
     engines: {node: '>= 14'}
 
-  socks@2.8.7:
-    resolution: {integrity: sha512-HLpt+uLy/pxB+bum/9DzAgiKS8CX1EvbWxI4zlmgGCExImLdiad2iCwXT5Z4c9c3Eq8rP2318mPW2c+QbtjK8A==}
+  socks@2.8.8:
+    resolution: {integrity: sha512-NlGELfPrgX2f1TAAcz0WawlLn+0r3FyhhCRpFFK2CemXenPYvzMWWZINv3eDNo9ucdwme7oCHRY0Jnbs4aIkog==}
     engines: {node: '>= 10.0.0', npm: '>= 3.0.0'}
 
   sort-object-keys@1.1.3:
@@ -6017,7 +6017,7 @@ snapshots:
   '@eslint/eslintrc@2.1.4':
     dependencies:
       ajv: 6.12.6
-      debug: 4.4.3(supports-color@8.1.1)
+      debug: 4.3.7
       espree: 9.6.1
       globals: 13.24.0
       ignore: 5.3.1
@@ -6033,7 +6033,7 @@ snapshots:
   '@humanwhocodes/config-array@0.13.0':
     dependencies:
       '@humanwhocodes/object-schema': 2.0.3
-      debug: 4.4.3(supports-color@8.1.1)
+      debug: 4.3.7
       minimatch: 3.1.2
     transitivePeerDependencies:
       - supports-color
@@ -6470,11 +6470,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@oclif/plugin-update@4.7.33':
+  '@oclif/plugin-update@4.7.35':
     dependencies:
       '@inquirer/select': 2.5.0
       '@oclif/core': 4.10.6
-      '@oclif/table': 0.5.4
+      '@oclif/table': 0.5.6
       ansis: 3.17.0
       debug: 4.4.3(supports-color@8.1.1)
       filesize: 6.4.0
@@ -6518,7 +6518,7 @@ snapshots:
       - react-devtools-core
       - utf-8-validate
 
-  '@oclif/table@0.5.4':
+  '@oclif/table@0.5.6':
     dependencies:
       '@types/react': 18.3.28
       change-case: 5.4.4
@@ -6527,6 +6527,7 @@ snapshots:
       natural-orderby: 3.0.2
       object-hash: 3.0.0
       react: 18.3.1
+      string-width: 8.2.1
       strip-ansi: 7.2.0
       wrap-ansi: 9.0.2
     transitivePeerDependencies:
@@ -6635,7 +6636,7 @@ snapshots:
       conventional-changelog-writer: 8.4.0
       conventional-commits-filter: 5.0.0
       conventional-commits-parser: 6.4.0
-      debug: 4.4.3(supports-color@8.1.1)
+      debug: 4.3.7
       import-from-esm: 2.0.0
       lodash-es: 4.18.1
       micromatch: 4.0.8
@@ -7520,7 +7521,7 @@ snapshots:
 
   base64-js@1.5.1: {}
 
-  basic-ftp@5.3.0: {}
+  basic-ftp@5.3.1: {}
 
   before-after-hook@4.0.0: {}
 
@@ -8822,7 +8823,7 @@ snapshots:
 
   get-uri@6.0.5:
     dependencies:
-      basic-ftp: 5.3.0
+      basic-ftp: 5.3.1
       data-uri-to-buffer: 6.0.2
       debug: 4.4.3(supports-color@8.1.1)
     transitivePeerDependencies:
@@ -9229,7 +9230,7 @@ snapshots:
     transitivePeerDependencies:
       - reflect-metadata
 
-  ip-address@10.1.0: {}
+  ip-address@10.2.0: {}
 
   is-arguments@1.2.0:
     dependencies:
@@ -9846,7 +9847,7 @@ snapshots:
     dependencies:
       hosted-git-info: 7.0.2
       is-core-module: 2.13.1
-      semver: 7.7.4
+      semver: 7.6.3
       validate-npm-package-license: 3.0.4
 
   normalize-package-data@6.0.2:
@@ -9869,7 +9870,7 @@ snapshots:
     dependencies:
       hosted-git-info: 7.0.2
       proc-log: 4.2.0
-      semver: 7.7.4
+      semver: 7.6.3
       validate-npm-package-name: 5.0.1
 
   npm-run-path@2.0.2:
@@ -10507,7 +10508,7 @@ snapshots:
 
   semver-diff@5.0.0:
     dependencies:
-      semver: 7.7.4
+      semver: 7.6.3
 
   semver-regex@4.0.5: {}
 
@@ -10661,13 +10662,13 @@ snapshots:
     dependencies:
       agent-base: 7.1.4
       debug: 4.4.3(supports-color@8.1.1)
-      socks: 2.8.7
+      socks: 2.8.8
     transitivePeerDependencies:
       - supports-color
 
-  socks@2.8.7:
+  socks@2.8.8:
     dependencies:
-      ip-address: 10.1.0
+      ip-address: 10.2.0
       smart-buffer: 4.2.0
 
   sort-object-keys@1.1.3: {}
@@ -10680,7 +10681,7 @@ snapshots:
       git-hooks-list: 3.1.0
       globby: 13.2.2
       is-plain-obj: 4.1.0
-      semver: 7.7.4
+      semver: 7.6.3
       sort-object-keys: 1.1.3
 
   source-map@0.6.1: {}
