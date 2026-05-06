@@ -30,8 +30,8 @@ importers:
         specifier: ^4.7.35
         version: 4.7.35
       '@oclif/plugin-warn-if-update-available':
-        specifier: ^3.1.61
-        version: 3.1.61
+        specifier: ^3.1.62
+        version: 3.1.62
       chalk:
         specifier: ^5.6.2
         version: 5.6.2
@@ -893,8 +893,8 @@ packages:
     resolution: {integrity: sha512-HZ+G8QpSoI9khWqkBeMVV8b4o3NF5x4Bz8MXJA/Ys9PeQJGX73GeLlL3XseLkq3ui9IEGWjwL0qm3ld257CzdA==}
     engines: {node: '>=18.0.0'}
 
-  '@oclif/plugin-warn-if-update-available@3.1.61':
-    resolution: {integrity: sha512-4XcrTxcCs+brR/eZ0BPeuiREiH3USlJiaHbUqPhnIBuyxhhUSYVd8ZO6s5MQN7AXJq4SMQ+B5zLaHq+ep/afIw==}
+  '@oclif/plugin-warn-if-update-available@3.1.62':
+    resolution: {integrity: sha512-g1tOOf9tJ3RE4dqhUynw3TH8Gea78IkzG9hq2lcUJ5wIdOSzcp8+3SWVzzpKfHgwBGgFupmj8peCjypybJVIrg==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/prettier-config@0.2.1':
@@ -1431,6 +1431,7 @@ packages:
 
   '@ungap/structured-clone@1.2.0':
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
+    deprecated: Potential CWE-502 - Update to 1.3.1 or higher
 
   '@unrs/resolver-binding-android-arm-eabi@1.11.1':
     resolution: {integrity: sha512-ppLRUgHVaGRWUx0R0Ut06Mjo9gBaBkg3v/8AxusGLhsIotbBLuRk51rAzqLC8gq6NyyAojEXglNjzf6R948DNw==}
@@ -6334,7 +6335,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@oclif/plugin-warn-if-update-available@3.1.61':
+  '@oclif/plugin-warn-if-update-available@3.1.62':
     dependencies:
       '@oclif/core': 4.11.0
       ansis: 3.17.0
@@ -9672,7 +9673,7 @@ snapshots:
       '@oclif/core': 4.9.0
       '@oclif/plugin-help': 6.2.46
       '@oclif/plugin-not-found': 3.2.82(@types/node@25.6.0)
-      '@oclif/plugin-warn-if-update-available': 3.1.61
+      '@oclif/plugin-warn-if-update-available': 3.1.62
       ansis: 3.17.0
       async-retry: 1.3.3
       change-case: 4.1.2
