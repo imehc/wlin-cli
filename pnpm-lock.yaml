@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@oclif/core':
-        specifier: ^4.11.1
-        version: 4.11.1
+        specifier: ^4.11.2
+        version: 4.11.2
       '@oclif/plugin-autocomplete':
         specifier: ^3.2.47
         version: 3.2.47
@@ -71,7 +71,7 @@ importers:
         version: 0.2.1
       '@oclif/test':
         specifier: ^4.1.18
-        version: 4.1.18(@oclif/core@4.11.1)
+        version: 4.1.18(@oclif/core@4.11.2)
       '@semantic-release/changelog':
         specifier: ^6.0.3
         version: 6.0.3(semantic-release@25.0.3(typescript@5.6.3))
@@ -865,8 +865,8 @@ packages:
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
 
-  '@oclif/core@4.11.1':
-    resolution: {integrity: sha512-+N5yqeoOKPnT0p+ZJiNutMILsZukZrEpsVup24XERla594EkGSWS9tiCqRfvzr1xfvf/AhM9pb0yPaf8L3Y9Uw==}
+  '@oclif/core@4.11.2':
+    resolution: {integrity: sha512-LWDalCgy+hYyAkLa9sMIXMXk6ws5RzQhVnkmfXtVIIyEEYigbXQ/9/x+s76p53MiXxNc6SJB7lfwkPF+SdzfMQ==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/core@4.9.0':
@@ -1737,8 +1737,8 @@ packages:
   brace-expansion@2.1.0:
     resolution: {integrity: sha512-TN1kCZAgdgweJhWWpgKYrQaMNHcDULHkWwQIspdtjV4Y5aurRdZpjAqn6yX3FPqTA9ngHCc4hJxMAMgGfve85w==}
 
-  brace-expansion@5.0.5:
-    resolution: {integrity: sha512-VZznLgtwhn+Mact9tfiwx64fA9erHH/MCXEUfB/0bX/6Fz6ny5EGTXYltMocqg4xFAQZtnO3DHWWXi8RiuN7cQ==}
+  brace-expansion@5.0.6:
+    resolution: {integrity: sha512-kLpxurY4Z4r9sgMsyG0Z9uzsBlgiU/EFKhj/h91/8yHu0edo7XuixOIH3VcJ8kkxs6/jPzoI6U9Vj3WqbMQ94g==}
     engines: {node: 18 || 20 || >=22}
 
   braces@3.0.2:
@@ -5696,7 +5696,7 @@ snapshots:
   '@commitlint/is-ignored@20.5.0':
     dependencies:
       '@commitlint/types': 20.5.0
-      semver: 7.7.4
+      semver: 7.8.0
 
   '@commitlint/lint@20.5.3':
     dependencies:
@@ -5825,7 +5825,7 @@ snapshots:
   '@eslint/eslintrc@2.1.4':
     dependencies:
       ajv: 6.12.6
-      debug: 4.4.3(supports-color@8.1.1)
+      debug: 4.3.7
       espree: 9.6.1
       globals: 13.24.0
       ignore: 5.3.1
@@ -5841,7 +5841,7 @@ snapshots:
   '@humanwhocodes/config-array@0.13.0':
     dependencies:
       '@humanwhocodes/object-schema': 2.0.3
-      debug: 4.4.3(supports-color@8.1.1)
+      debug: 4.3.7
       minimatch: 3.1.2
     transitivePeerDependencies:
       - supports-color
@@ -6210,7 +6210,7 @@ snapshots:
 
   '@nolyfill/is-core-module@1.0.39': {}
 
-  '@oclif/core@4.11.1':
+  '@oclif/core@4.11.2':
     dependencies:
       ansi-escapes: 4.3.2
       ansis: 3.17.0
@@ -6223,7 +6223,7 @@ snapshots:
       is-wsl: 2.2.0
       lilconfig: 3.1.3
       minimatch: 10.2.5
-      semver: 7.7.4
+      semver: 7.8.0
       string-width: 4.2.3
       supports-color: 8.1.1
       tinyglobby: 0.2.16
@@ -6254,7 +6254,7 @@ snapshots:
 
   '@oclif/plugin-autocomplete@3.2.47':
     dependencies:
-      '@oclif/core': 4.11.1
+      '@oclif/core': 4.11.2
       ansis: 3.17.0
       debug: 4.4.3(supports-color@8.1.1)
       ejs: 3.1.10
@@ -6263,7 +6263,7 @@ snapshots:
 
   '@oclif/plugin-commands@4.1.49':
     dependencies:
-      '@oclif/core': 4.11.1
+      '@oclif/core': 4.11.2
       '@oclif/table': 0.5.6
       lodash: 4.18.1
       object-treeify: 4.0.1
@@ -6274,12 +6274,12 @@ snapshots:
 
   '@oclif/plugin-help@6.2.46':
     dependencies:
-      '@oclif/core': 4.11.1
+      '@oclif/core': 4.11.2
 
   '@oclif/plugin-not-found@3.2.82(@types/node@25.6.2)':
     dependencies:
       '@inquirer/prompts': 7.10.1(@types/node@25.6.2)
-      '@oclif/core': 4.11.1
+      '@oclif/core': 4.11.2
       ansis: 3.17.0
       fast-levenshtein: 3.0.0
     transitivePeerDependencies:
@@ -6287,7 +6287,7 @@ snapshots:
 
   '@oclif/plugin-plugins@5.4.64':
     dependencies:
-      '@oclif/core': 4.11.1
+      '@oclif/core': 4.11.2
       ansis: 3.17.0
       debug: 4.4.3(supports-color@8.1.1)
       npm: 11.14.0
@@ -6304,7 +6304,7 @@ snapshots:
   '@oclif/plugin-update@4.7.35':
     dependencies:
       '@inquirer/select': 2.5.0
-      '@oclif/core': 4.11.1
+      '@oclif/core': 4.11.2
       '@oclif/table': 0.5.6
       ansis: 3.17.0
       debug: 4.4.3(supports-color@8.1.1)
@@ -6321,7 +6321,7 @@ snapshots:
 
   '@oclif/plugin-warn-if-update-available@3.1.64':
     dependencies:
-      '@oclif/core': 4.11.1
+      '@oclif/core': 4.11.2
       ansis: 3.17.0
       debug: 4.4.3(supports-color@8.1.1)
       http-call: 5.3.0
@@ -6349,9 +6349,9 @@ snapshots:
       - react-devtools-core
       - utf-8-validate
 
-  '@oclif/test@4.1.18(@oclif/core@4.11.1)':
+  '@oclif/test@4.1.18(@oclif/core@4.11.2)':
     dependencies:
-      '@oclif/core': 4.11.1
+      '@oclif/core': 4.11.2
       ansis: 3.17.0
       debug: 4.4.3(supports-color@8.1.1)
     transitivePeerDependencies:
@@ -6974,7 +6974,7 @@ snapshots:
       graphemer: 1.4.0
       ignore: 5.3.2
       natural-compare: 1.4.0
-      semver: 7.7.4
+      semver: 7.8.0
       ts-api-utils: 1.4.3(typescript@5.6.3)
     optionalDependencies:
       typescript: 5.6.3
@@ -7352,7 +7352,7 @@ snapshots:
     dependencies:
       balanced-match: 1.0.2
 
-  brace-expansion@5.0.5:
+  brace-expansion@5.0.6:
     dependencies:
       balanced-match: 4.0.4
 
@@ -8161,7 +8161,7 @@ snapshots:
       is-core-module: 2.16.1
       minimatch: 3.1.5
       resolve: 1.22.12
-      semver: 7.7.4
+      semver: 7.8.0
 
   eslint-plugin-perfectionist@2.11.0(eslint@8.57.1)(typescript@5.6.3):
     dependencies:
@@ -8189,7 +8189,7 @@ snapshots:
       read-pkg-up: 7.0.1
       regexp-tree: 0.1.27
       regjsparser: 0.10.0
-      semver: 7.7.4
+      semver: 7.8.0
       strip-indent: 3.0.0
 
   eslint-scope@7.2.2:
@@ -9402,7 +9402,7 @@ snapshots:
 
   minimatch@10.2.5:
     dependencies:
-      brace-expansion: 5.0.5
+      brace-expansion: 5.0.6
 
   minimatch@3.1.2:
     dependencies:
@@ -9542,7 +9542,7 @@ snapshots:
   normalize-package-data@8.0.0:
     dependencies:
       hosted-git-info: 9.0.3
-      semver: 7.7.4
+      semver: 7.8.0
       validate-npm-package-license: 3.0.4
 
   normalize-url@8.1.1: {}
@@ -9553,7 +9553,7 @@ snapshots:
     dependencies:
       hosted-git-info: 7.0.2
       proc-log: 4.2.0
-      semver: 7.7.4
+      semver: 7.8.0
       validate-npm-package-name: 5.0.1
 
   npm-run-path@2.0.2:
