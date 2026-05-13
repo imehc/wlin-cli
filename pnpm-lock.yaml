@@ -18,8 +18,8 @@ importers:
         specifier: ^4.1.52
         version: 4.1.52
       '@oclif/plugin-help':
-        specifier: ^6.2.46
-        version: 6.2.46
+        specifier: ^6.2.48
+        version: 6.2.48
       '@oclif/plugin-not-found':
         specifier: ^3.2.85
         version: 3.2.85(@types/node@25.7.0)
@@ -885,8 +885,8 @@ packages:
     resolution: {integrity: sha512-D0TtZffJEPlkP6pWbhDHG5Yr8nkMA04UX0CCG1VmcFBxSkPUOmG/9PRnPobo8fFahG72z8hqcBoq/jmptJgqCw==}
     engines: {node: '>=18.0.0'}
 
-  '@oclif/plugin-help@6.2.46':
-    resolution: {integrity: sha512-KmuMFt/fURCVxor0rrRjEqs2nLN0Y3ixcixo/M5VjKcN920gbuw5T+AF23FBeyUDuW/Dg79YPcTWy/Rtz0Dg/A==}
+  '@oclif/plugin-help@6.2.48':
+    resolution: {integrity: sha512-nvGLBtUZUWrHfoAEDRsRZUHKVwptyZ6F+MErdVRLQBo3dja0GCZH8DE33dA7mBux2KOmbxGqop15gyud9HZYhQ==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/plugin-not-found@3.2.85':
@@ -6289,7 +6289,7 @@ snapshots:
       - react-devtools-core
       - utf-8-validate
 
-  '@oclif/plugin-help@6.2.46':
+  '@oclif/plugin-help@6.2.48':
     dependencies:
       '@oclif/core': 4.11.2
 
@@ -9672,7 +9672,7 @@ snapshots:
       '@inquirer/input': 2.3.0
       '@inquirer/select': 2.5.0
       '@oclif/core': 4.9.0
-      '@oclif/plugin-help': 6.2.46
+      '@oclif/plugin-help': 6.2.48
       '@oclif/plugin-not-found': 3.2.85(@types/node@25.7.0)
       '@oclif/plugin-warn-if-update-available': 3.1.64
       ansis: 3.17.0
