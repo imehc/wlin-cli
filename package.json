@@ -82,7 +82,7 @@
   "devDependencies": {
     "@commitlint/cli": "^20.5.3",
     "@commitlint/config-conventional": "^21.0.1",
-    "@commitlint/types": "^21.0.0",
+    "@commitlint/types": "^21.0.1",
     "@oclif/prettier-config": "^0.2.1",
     "@oclif/test": "^4.1.18",
     "@semantic-release/changelog": "^6.0.3",
