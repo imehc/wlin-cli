@@ -106,7 +106,7 @@
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
     "javascript-obfuscator": "^5.4.2",
-    "lint-staged": "^17.0.2",
+    "lint-staged": "^17.0.4",
     "mocha": "^11.7.5",
     "oclif": "^4.23.2",
     "prettier": "^3.8.3",
