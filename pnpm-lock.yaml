@@ -30,8 +30,8 @@ importers:
         specifier: ^4.7.40
         version: 4.7.40
       '@oclif/plugin-warn-if-update-available':
-        specifier: ^3.1.64
-        version: 3.1.64
+        specifier: ^3.1.65
+        version: 3.1.65
       chalk:
         specifier: ^5.6.2
         version: 5.6.2
@@ -885,8 +885,8 @@ packages:
     resolution: {integrity: sha512-c9gojJ6+T27Q8tQf/p4M5qitQlpshqGaSdR9/Lau2DYPheNiicRLhQkr0yknXH2AE/vIdf2nyl8albfZ1D5itw==}
     engines: {node: '>=18.0.0'}
 
-  '@oclif/plugin-warn-if-update-available@3.1.64':
-    resolution: {integrity: sha512-+BauVC7jeMRs6NPvFFO1KHdSIVL10ruz6W3laKdN0i7PjSo14clmQe+DUJVTADI5Z3eYFYnsISwdDbOU/2pnYQ==}
+  '@oclif/plugin-warn-if-update-available@3.1.65':
+    resolution: {integrity: sha512-HcSJc8SeCVUBHwc063xDL0LcpdjcamAISlisSX14VDDYQayMantvtVNOo9PmciwYpXRXfAykeH1z066YkA9JvQ==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/prettier-config@0.2.1':
@@ -6019,7 +6019,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@oclif/plugin-warn-if-update-available@3.1.64':
+  '@oclif/plugin-warn-if-update-available@3.1.65':
     dependencies:
       '@oclif/core': 4.11.2
       ansis: 3.17.0
@@ -9094,7 +9094,7 @@ snapshots:
       '@oclif/core': 4.11.2
       '@oclif/plugin-help': 6.2.49
       '@oclif/plugin-not-found': 3.2.85(@types/node@25.8.0)
-      '@oclif/plugin-warn-if-update-available': 3.1.64
+      '@oclif/plugin-warn-if-update-available': 3.1.65
       ansis: 3.17.0
       async-retry: 1.3.3
       change-case: 4.1.2
