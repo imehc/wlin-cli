@@ -69,7 +69,7 @@
     "@oclif/plugin-not-found": "^3.2.85",
     "@oclif/plugin-plugins": "^5.4.68",
     "@oclif/plugin-update": "^4.7.40",
-    "@oclif/plugin-warn-if-update-available": "^3.1.64",
+    "@oclif/plugin-warn-if-update-available": "^3.1.65",
     "chalk": "^5.6.2",
     "figlet": "^1.11.0",
     "fs-extra": "^11.3.5",
