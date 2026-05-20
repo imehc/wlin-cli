@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@oclif/core':
-        specifier: ^4.11.2
-        version: 4.11.2
+        specifier: ^4.11.3
+        version: 4.11.3
       '@oclif/plugin-autocomplete':
         specifier: ^3.2.49
         version: 3.2.49
@@ -71,7 +71,7 @@ importers:
         version: 0.2.1
       '@oclif/test':
         specifier: ^4.1.18
-        version: 4.1.18(@oclif/core@4.11.2)
+        version: 4.1.18(@oclif/core@4.11.3)
       '@semantic-release/changelog':
         specifier: ^6.0.3
         version: 6.0.3(semantic-release@25.0.3(typescript@5.6.3))
@@ -820,10 +820,6 @@ packages:
   '@nolyfill/is-core-module@1.0.39':
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
-
-  '@oclif/core@4.11.2':
-    resolution: {integrity: sha512-LWDalCgy+hYyAkLa9sMIXMXk6ws5RzQhVnkmfXtVIIyEEYigbXQ/9/x+s76p53MiXxNc6SJB7lfwkPF+SdzfMQ==}
-    engines: {node: '>=18.0.0'}
 
   '@oclif/core@4.11.3':
     resolution: {integrity: sha512-gQCSYAtUhJilGKaSaZhqejH9X1dDu+jWQjLmtGOgN/XcKaAEPPSeT2mu1UvlvtPox1/NNRdlBcUa8KRKo2HnJQ==}
@@ -5796,27 +5792,6 @@ snapshots:
 
   '@nolyfill/is-core-module@1.0.39': {}
 
-  '@oclif/core@4.11.2':
-    dependencies:
-      ansi-escapes: 4.3.2
-      ansis: 3.17.0
-      clean-stack: 3.0.1
-      cli-spinners: 2.9.2
-      debug: 4.4.3(supports-color@8.1.1)
-      ejs: 3.1.10
-      get-package-type: 0.1.0
-      indent-string: 4.0.0
-      is-wsl: 2.2.0
-      lilconfig: 3.1.3
-      minimatch: 10.2.5
-      semver: 7.8.0
-      string-width: 4.2.3
-      supports-color: 8.1.1
-      tinyglobby: 0.2.16
-      widest-line: 3.1.0
-      wordwrap: 1.0.0
-      wrap-ansi: 7.0.0
-
   '@oclif/core@4.11.3':
     dependencies:
       ansi-escapes: 4.3.2
@@ -5840,7 +5815,7 @@ snapshots:
 
   '@oclif/plugin-autocomplete@3.2.49':
     dependencies:
-      '@oclif/core': 4.11.2
+      '@oclif/core': 4.11.3
       ansis: 3.17.0
       debug: 4.4.3(supports-color@8.1.1)
       ejs: 3.1.10
@@ -5849,7 +5824,7 @@ snapshots:
 
   '@oclif/plugin-commands@4.1.54':
     dependencies:
-      '@oclif/core': 4.11.2
+      '@oclif/core': 4.11.3
       '@oclif/table': 0.5.8
       lodash: 4.18.1
       object-treeify: 4.0.1
@@ -5860,7 +5835,7 @@ snapshots:
 
   '@oclif/plugin-help@6.2.49':
     dependencies:
-      '@oclif/core': 4.11.2
+      '@oclif/core': 4.11.3
 
   '@oclif/plugin-not-found@3.2.86(@types/node@25.9.1)':
     dependencies:
@@ -5873,7 +5848,7 @@ snapshots:
 
   '@oclif/plugin-plugins@5.4.68':
     dependencies:
-      '@oclif/core': 4.11.2
+      '@oclif/core': 4.11.3
       ansis: 3.17.0
       debug: 4.4.3(supports-color@8.1.1)
       npm: 11.14.1
@@ -5890,7 +5865,7 @@ snapshots:
   '@oclif/plugin-update@4.7.40':
     dependencies:
       '@inquirer/select': 2.5.0
-      '@oclif/core': 4.11.2
+      '@oclif/core': 4.11.3
       '@oclif/table': 0.5.8
       ansis: 3.17.0
       debug: 4.4.3(supports-color@8.1.1)
@@ -5907,7 +5882,7 @@ snapshots:
 
   '@oclif/plugin-warn-if-update-available@3.1.65':
     dependencies:
-      '@oclif/core': 4.11.2
+      '@oclif/core': 4.11.3
       ansis: 3.17.0
       debug: 4.4.3(supports-color@8.1.1)
       http-call: 5.3.0
@@ -5935,9 +5910,9 @@ snapshots:
       - react-devtools-core
       - utf-8-validate
 
-  '@oclif/test@4.1.18(@oclif/core@4.11.2)':
+  '@oclif/test@4.1.18(@oclif/core@4.11.3)':
     dependencies:
-      '@oclif/core': 4.11.2
+      '@oclif/core': 4.11.3
       ansis: 3.17.0
       debug: 4.4.3(supports-color@8.1.1)
     transitivePeerDependencies:
@@ -8867,7 +8842,7 @@ snapshots:
   normalize-package-data@8.0.0:
     dependencies:
       hosted-git-info: 9.0.3
-      semver: 7.7.4
+      semver: 7.8.0
       validate-npm-package-license: 3.0.4
 
   normalize-url@8.1.1: {}
@@ -8960,7 +8935,7 @@ snapshots:
       '@inquirer/confirm': 3.2.0
       '@inquirer/input': 2.3.0
       '@inquirer/select': 2.5.0
-      '@oclif/core': 4.11.2
+      '@oclif/core': 4.11.3
       '@oclif/plugin-help': 6.2.49
       '@oclif/plugin-not-found': 3.2.86(@types/node@25.9.1)
       '@oclif/plugin-warn-if-update-available': 3.1.65
