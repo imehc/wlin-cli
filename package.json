@@ -105,7 +105,7 @@
     "eslint-config-oclif-typescript": "^3.1.14",
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
-    "javascript-obfuscator": "^5.4.2",
+    "javascript-obfuscator": "^5.4.3",
     "lint-staged": "^17.0.5",
     "mocha": "^11.7.5",
     "oclif": "^4.23.7",
