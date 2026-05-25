@@ -15,8 +15,8 @@ importers:
         specifier: ^3.2.50
         version: 3.2.50
       '@oclif/plugin-commands':
-        specifier: ^4.1.54
-        version: 4.1.54
+        specifier: ^4.1.55
+        version: 4.1.55
       '@oclif/plugin-help':
         specifier: ^6.2.49
         version: 6.2.49
@@ -840,8 +840,8 @@ packages:
     resolution: {integrity: sha512-SQRIJSYue/1tIn7X55W/97gTb8UkSoHeFAcBng2r2YMJyWj8uB1DtFl28D8BDXPQXPTiPK89hQGejoT7RdkR2w==}
     engines: {node: '>=18.0.0'}
 
-  '@oclif/plugin-commands@4.1.54':
-    resolution: {integrity: sha512-4Km/ejYtqWBcrnFE2Ig7nbc+lyXBQDG+XND+Psy1I8FQZX+Kn54RFG3LbKZcqKKsh61jUpupa4zbcWgY29hlQw==}
+  '@oclif/plugin-commands@4.1.55':
+    resolution: {integrity: sha512-SA7JLVj0UP3Q8LBpOD6WSYAdC8JTJqXQLWedXusaKPZEj+bdBV/j6pjyfgfUWBJzTErGi3PJqJG5AojymvD7Kw==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/plugin-help@6.2.49':
@@ -869,6 +869,10 @@ packages:
 
   '@oclif/table@0.5.8':
     resolution: {integrity: sha512-yIWar+oDCoN1ji3gUB1QSQAewBiWevwLI7Stg9a+0MX7dtmLXcYucqyR6L5BvJ1b+ekG8C/JY+GJc+ytnzrR9A==}
+    engines: {node: '>=18.0.0'}
+
+  '@oclif/table@0.5.9':
+    resolution: {integrity: sha512-/bvSRF38rrZ8O3hsChEKb98bEpmY7GAMeMU5hRkt73RCEoAo1UuRKX4IO0zlkD6UooSs30LfEMJeSU2NZOkndA==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/test@4.1.18':
@@ -4866,8 +4870,8 @@ packages:
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
-  ws@8.20.1:
-    resolution: {integrity: sha512-It4dO0K5v//JtTXuPkfEOaI3uUN87iYPnqo/ZzqCoG3g8uhA66QUMs/SrM0YK7/NAu+r4LMh/9dq2A7k+rHs+w==}
+  ws@8.21.0:
+    resolution: {integrity: sha512-Vsp28b7DRcimFQvrqu2Wek3z1iYxDCWqHYB8Qsnk/S4RfaCQzPGPyBNuVjJV3cd6UiKtUtp6sNM77gWvzcCH+g==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -5853,10 +5857,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@oclif/plugin-commands@4.1.54':
+  '@oclif/plugin-commands@4.1.55':
     dependencies:
       '@oclif/core': 4.11.3
-      '@oclif/table': 0.5.8
+      '@oclif/table': 0.5.9
       lodash: 4.18.1
       object-treeify: 4.0.1
     transitivePeerDependencies:
@@ -5925,6 +5929,23 @@ snapshots:
   '@oclif/prettier-config@0.2.1': {}
 
   '@oclif/table@0.5.8':
+    dependencies:
+      '@types/react': 18.3.29
+      change-case: 5.4.4
+      cli-truncate: 4.0.0
+      ink: 5.0.1(@types/react@18.3.29)(react@18.3.1)
+      natural-orderby: 3.0.2
+      object-hash: 3.0.0
+      react: 18.3.1
+      string-width: 8.2.1
+      strip-ansi: 7.2.0
+      wrap-ansi: 9.0.2
+    transitivePeerDependencies:
+      - bufferutil
+      - react-devtools-core
+      - utf-8-validate
+
+  '@oclif/table@0.5.9':
     dependencies:
       '@types/react': 18.3.29
       change-case: 5.4.4
@@ -8216,7 +8237,7 @@ snapshots:
       type-fest: 4.41.0
       widest-line: 5.0.0
       wrap-ansi: 9.0.2
-      ws: 8.20.1
+      ws: 8.21.0
       yoga-wasm-web: 0.3.3
     optionalDependencies:
       '@types/react': 18.3.29
@@ -10230,7 +10251,7 @@ snapshots:
 
   wrappy@1.0.2: {}
 
-  ws@8.20.1: {}
+  ws@8.21.0: {}
 
   xml-naming@0.1.0: {}
 
