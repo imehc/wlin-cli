@@ -67,7 +67,7 @@
     "@oclif/plugin-commands": "^4.1.55",
     "@oclif/plugin-help": "^6.2.49",
     "@oclif/plugin-not-found": "^3.2.86",
-    "@oclif/plugin-plugins": "^5.4.69",
+    "@oclif/plugin-plugins": "^5.4.72",
     "@oclif/plugin-update": "^4.7.43",
     "@oclif/plugin-warn-if-update-available": "^3.1.65",
     "chalk": "^5.6.2",
