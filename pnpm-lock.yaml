@@ -21,8 +21,8 @@ importers:
         specifier: ^6.2.49
         version: 6.2.49
       '@oclif/plugin-not-found':
-        specifier: ^3.2.86
-        version: 3.2.86(@types/node@25.9.1)
+        specifier: ^3.2.87
+        version: 3.2.87(@types/node@25.9.1)
       '@oclif/plugin-plugins':
         specifier: ^5.4.72
         version: 5.4.72
@@ -848,8 +848,8 @@ packages:
     resolution: {integrity: sha512-fEsO0YU7ThtzHE1RGuoHxFu/OGlqxm7PCfFp+U1PS8sde4E0cDqjVDuv78+VKrr45LpC5lWOApj7pm3FNfHrVA==}
     engines: {node: '>=18.0.0'}
 
-  '@oclif/plugin-not-found@3.2.86':
-    resolution: {integrity: sha512-BJhJSahwsYayZpo18f0fPTg8tKb9dIvydaz03NCK3eMfmcsT1MmXhXqh1KEV8J7mz0sQ6f0qFEb6BXy490/iUg==}
+  '@oclif/plugin-not-found@3.2.87':
+    resolution: {integrity: sha512-lKyZ4INrx5vB14HNWIkM6Vla/4rWVhOA2U7uCAj6gEBg36/KVmwYXxpZ9ckzZS0+jtLE84TVqS8NCYEhQiQojw==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/plugin-plugins@5.4.72':
@@ -5871,7 +5871,7 @@ snapshots:
     dependencies:
       '@oclif/core': 4.11.4
 
-  '@oclif/plugin-not-found@3.2.86(@types/node@25.9.1)':
+  '@oclif/plugin-not-found@3.2.87(@types/node@25.9.1)':
     dependencies:
       '@inquirer/prompts': 7.10.1(@types/node@25.9.1)
       '@oclif/core': 4.11.4
@@ -8975,7 +8975,7 @@ snapshots:
       '@inquirer/select': 2.5.0
       '@oclif/core': 4.11.4
       '@oclif/plugin-help': 6.2.49
-      '@oclif/plugin-not-found': 3.2.86(@types/node@25.9.1)
+      '@oclif/plugin-not-found': 3.2.87(@types/node@25.9.1)
       '@oclif/plugin-warn-if-update-available': 3.1.65
       ansis: 3.17.0
       async-retry: 1.3.3
