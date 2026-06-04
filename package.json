@@ -80,7 +80,7 @@
     "simple-git": "^3.36.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^21.0.1",
+    "@commitlint/cli": "^21.0.2",
     "@commitlint/config-conventional": "^21.0.2",
     "@commitlint/types": "^21.0.1",
     "@oclif/prettier-config": "^0.2.1",
