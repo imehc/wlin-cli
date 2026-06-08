@@ -27,8 +27,8 @@ importers:
         specifier: ^5.4.72
         version: 5.4.72
       '@oclif/plugin-update':
-        specifier: ^4.7.46
-        version: 4.7.46
+        specifier: ^4.7.47
+        version: 4.7.47
       '@oclif/plugin-warn-if-update-available':
         specifier: ^3.1.65
         version: 3.1.65
@@ -856,8 +856,8 @@ packages:
     resolution: {integrity: sha512-eZ9BWmKzO8BomPLbAcfYHUSm8gxgxYvyF/yeDIycDfxvY/hHA0ibqdQ6UBNi7lzuVOoWi4VmkY3wnvdXX3Fo1g==}
     engines: {node: '>=18.0.0'}
 
-  '@oclif/plugin-update@4.7.46':
-    resolution: {integrity: sha512-d6zxO0Iy9/r8dfLQlRlGfmCdirkLscu1QocV/n+zVXGuI5YQ3TyoSo64BQIp3c8O0NBGHsxFdJvLLSN0sOJR0A==}
+  '@oclif/plugin-update@4.7.47':
+    resolution: {integrity: sha512-Nvt5GxyjVyxALgTL3lP0l4Hj+UzmEAtdPPsn18QxPcd8qjsCPq4tVeU36gU8GZrv5IutFYRaY/W5OaO+o9WshQ==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/plugin-warn-if-update-available@3.1.65':
@@ -1111,8 +1111,8 @@ packages:
   '@types/node-notifier@8.0.5':
     resolution: {integrity: sha512-LX7+8MtTsv6szumAp6WOy87nqMEdGhhry/Qfprjm1Ma6REjVzeF7SCyvPtp5RaF6IkXCS9V4ra8g5fwvf2ZAYg==}
 
-  '@types/node@22.19.19':
-    resolution: {integrity: sha512-dyh/xO2Fh5bYrfWaaqGrRQQGkNdmYw6AmaAUvYeUMNTWQtvb796ikLdmTchRmOlOiIJ1TDXfWgVx1QkUlQ6Hew==}
+  '@types/node@22.19.20':
+    resolution: {integrity: sha512-6tELRwSDYWW9EdZhbeZmYGZ1/7Djkt+Ah3/ScEYT9cDord7UJzasR/4D3VONg9tQI5CDp+/CZC1AXj2pCFOvpw==}
 
   '@types/node@25.9.1':
     resolution: {integrity: sha512-xfrlY7UD5rMJk3ZVJP8BNzS28J36YJg+xp+LPXV1TdWxr8uMH5A860QNxYDGQe/ylDSgjxE52Q9VnO7p75tJxg==}
@@ -1123,8 +1123,8 @@ packages:
   '@types/prop-types@15.7.15':
     resolution: {integrity: sha512-F6bEyamV9jKGAFBEmlQnesRPGOQqS2+Uwi0Em15xenOxHaf2hv6L8YCVn3rPdPJOiJfPiCnLIRyvwVaqMY3MIw==}
 
-  '@types/react@18.3.30':
-    resolution: {integrity: sha512-3ek6mwJL5/VBewBcY4S66cqlCtK3qi4WIq37Z0m/NHw1hjhI7274Mx1qz/+ggSzyBCOEf7eHjBN6INjPAWYfYw==}
+  '@types/react@18.3.31':
+    resolution: {integrity: sha512-vfEqpXTvwT91yhmwdfouStN2hSKwTvyRs8qpLfADyrq/kxDw0hZM7Wk9Ug1FELj8hIby+S/+kQCSRFF32nv2Qw==}
 
   '@types/semver@7.7.1':
     resolution: {integrity: sha512-FmgJfu+MOcQ370SD0ev7EI8TlCAfKYU+B4m5T3yXc1CiRN94g/SZPtsCkk506aUDtlMnFZvasDwHHUcZUEaYuA==}
@@ -4254,6 +4254,11 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
+  semver@7.8.2:
+    resolution: {integrity: sha512-c8jsqUZm3omBOI66G90z1Dyw5z622G8oLG+omfsHBJf3CWQTlOcwOjvOG6wtiNfW6anKm/eA39LMwMtMez2TiQ==}
+    engines: {node: '>=10'}
+    hasBin: true
+
   sentence-case@3.0.4:
     resolution: {integrity: sha512-8LS0JInaQMCRoQ7YUytAo/xUu5W2XnQxV2HI/6uM6U7CITS1RqPElr30V6uIqyMKM9lJGRVFy5/4CuzcixNYSg==}
 
@@ -5300,7 +5305,7 @@ snapshots:
   '@commitlint/is-ignored@21.0.2':
     dependencies:
       '@commitlint/types': 21.0.1
-      semver: 7.8.1
+      semver: 7.8.2
 
   '@commitlint/lint@21.0.2':
     dependencies:
@@ -5371,7 +5376,7 @@ snapshots:
   '@conventional-changelog/git-client@1.0.1(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.4.0)':
     dependencies:
       '@types/semver': 7.7.1
-      semver: 7.8.1
+      semver: 7.8.2
     optionalDependencies:
       conventional-commits-filter: 5.0.0
       conventional-commits-parser: 6.4.0
@@ -5380,7 +5385,7 @@ snapshots:
     dependencies:
       '@simple-libs/child-process-utils': 1.0.2
       '@simple-libs/stream-utils': 1.2.0
-      semver: 7.8.1
+      semver: 7.8.2
     optionalDependencies:
       conventional-commits-filter: 5.0.0
       conventional-commits-parser: 6.4.0
@@ -5521,7 +5526,7 @@ snapshots:
       '@inquirer/figures': 1.0.15
       '@inquirer/type': 2.0.0
       '@types/mute-stream': 0.0.4
-      '@types/node': 22.19.19
+      '@types/node': 22.19.20
       '@types/wrap-ansi': 3.0.0
       ansi-escapes: 4.3.2
       cli-width: 4.1.0
@@ -5892,7 +5897,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@oclif/plugin-update@4.7.46':
+  '@oclif/plugin-update@4.7.47':
     dependencies:
       '@inquirer/select': 2.5.0
       '@oclif/core': 4.11.4
@@ -5902,7 +5907,7 @@ snapshots:
       filesize: 6.4.0
       got: 13.0.0
       proxy-agent: 6.5.0
-      semver: 7.8.1
+      semver: 7.8.2
       tar-fs: 2.1.4
     transitivePeerDependencies:
       - bufferutil
@@ -5925,10 +5930,10 @@ snapshots:
 
   '@oclif/table@0.5.9':
     dependencies:
-      '@types/react': 18.3.30
+      '@types/react': 18.3.31
       change-case: 5.4.4
       cli-truncate: 4.0.0
-      ink: 5.0.1(@types/react@18.3.30)(react@18.3.1)
+      ink: 5.0.1(@types/react@18.3.31)(react@18.3.1)
       natural-orderby: 3.0.2
       object-hash: 3.0.0
       react: 18.3.1
@@ -6245,7 +6250,7 @@ snapshots:
     dependencies:
       '@types/node': 25.9.1
 
-  '@types/node@22.19.19':
+  '@types/node@22.19.20':
     dependencies:
       undici-types: 6.21.0
 
@@ -6257,7 +6262,7 @@ snapshots:
 
   '@types/prop-types@15.7.15': {}
 
-  '@types/react@18.3.30':
+  '@types/react@18.3.31':
     dependencies:
       '@types/prop-types': 15.7.15
       csstype: 3.2.3
@@ -6281,7 +6286,7 @@ snapshots:
       graphemer: 1.4.0
       ignore: 5.3.2
       natural-compare: 1.4.0
-      semver: 7.8.1
+      semver: 7.8.2
       ts-api-utils: 1.4.3(typescript@5.6.3)
     optionalDependencies:
       typescript: 5.6.3
@@ -6335,7 +6340,7 @@ snapshots:
       globby: 11.1.0
       is-glob: 4.0.3
       minimatch: 9.0.3
-      semver: 7.8.1
+      semver: 7.8.2
       ts-api-utils: 1.4.3(typescript@5.6.3)
     optionalDependencies:
       typescript: 5.6.3
@@ -6350,7 +6355,7 @@ snapshots:
       globby: 11.1.0
       is-glob: 4.0.3
       minimatch: 9.0.9
-      semver: 7.8.1
+      semver: 7.8.2
       ts-api-utils: 1.4.3(typescript@5.6.3)
     optionalDependencies:
       typescript: 5.6.3
@@ -6366,7 +6371,7 @@ snapshots:
       '@typescript-eslint/types': 6.21.0
       '@typescript-eslint/typescript-estree': 6.21.0(typescript@5.6.3)
       eslint: 8.57.1
-      semver: 7.8.1
+      semver: 7.8.2
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -6688,7 +6693,7 @@ snapshots:
 
   builtins@5.1.0:
     dependencies:
-      semver: 7.8.1
+      semver: 7.8.2
 
   cacheable-lookup@7.0.0: {}
 
@@ -6997,7 +7002,7 @@ snapshots:
       conventional-commits-filter: 5.0.0
       handlebars: 4.7.9
       meow: 13.2.0
-      semver: 7.8.1
+      semver: 7.8.2
 
   conventional-changelog@6.0.0(conventional-commits-filter@5.0.0):
     dependencies:
@@ -7476,7 +7481,7 @@ snapshots:
       is-core-module: 2.16.1
       minimatch: 3.1.5
       resolve: 1.22.12
-      semver: 7.8.1
+      semver: 7.8.2
 
   eslint-plugin-perfectionist@2.11.0(eslint@8.57.1)(typescript@5.6.3):
     dependencies:
@@ -7504,7 +7509,7 @@ snapshots:
       read-pkg-up: 7.0.1
       regexp-tree: 0.1.27
       regjsparser: 0.10.0
-      semver: 7.8.1
+      semver: 7.8.2
       strip-indent: 3.0.0
 
   eslint-scope@7.2.2:
@@ -8194,7 +8199,7 @@ snapshots:
 
   ini@6.0.0: {}
 
-  ink@5.0.1(@types/react@18.3.30)(react@18.3.1):
+  ink@5.0.1(@types/react@18.3.31)(react@18.3.1):
     dependencies:
       '@alcalzone/ansi-tokenize': 0.1.3
       ansi-escapes: 7.3.0
@@ -8222,7 +8227,7 @@ snapshots:
       ws: 8.21.0
       yoga-wasm-web: 0.3.3
     optionalDependencies:
-      '@types/react': 18.3.30
+      '@types/react': 18.3.31
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -8314,7 +8319,7 @@ snapshots:
 
   is-bun-module@2.0.0:
     dependencies:
-      semver: 7.8.1
+      semver: 7.8.2
 
   is-callable@1.2.7: {}
 
@@ -8876,7 +8881,7 @@ snapshots:
   normalize-package-data@8.0.0:
     dependencies:
       hosted-git-info: 9.0.3
-      semver: 7.8.1
+      semver: 7.8.2
       validate-npm-package-license: 3.0.4
 
   normalize-url@8.1.1: {}
@@ -9540,6 +9545,8 @@ snapshots:
   semver@7.7.4: {}
 
   semver@7.8.1: {}
+
+  semver@7.8.2: {}
 
   sentence-case@3.0.4:
     dependencies:
