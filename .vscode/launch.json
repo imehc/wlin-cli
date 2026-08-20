@@ -3,20 +3,22 @@
   "configurations": [
     {
       "type": "node",
-      "request": "attach",
-      "name": "Attach",
-      "port": 9229,
+      "request": "launch",
+      "name": "wlin-cli create (source)",
+      "runtimeExecutable": "bun",
+      "program": "${workspaceFolder}/bin/dev.js",
+      "args": ["create"],
+      "console": "integratedTerminal",
       "skipFiles": ["<node_internals>/**"]
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "Execute Command",
-      "skipFiles": ["<node_internals>/**"],
-      "runtimeExecutable": "node",
-      "runtimeArgs": ["--loader", "ts-node/esm", "--no-warnings=ExperimentalWarning"],
-      "program": "${workspaceFolder}/bin/dev.js",
-      "args": ["hello", "world"]
+      "name": "wlin-cli create (bundle)",
+      "program": "${workspaceFolder}/bin/run.js",
+      "args": ["create"],
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
     }
   ]
 }

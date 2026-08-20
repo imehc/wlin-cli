@@ -1,17 +1,31 @@
 {
   "compilerOptions": {
-    "declaration": true,
-    "module": "Node16",
-    "outDir": "dist",
-    "rootDir": "src",
-    "strict": true,
+    // preserve 是给「由别的工具打包/转译」的项目准备的模块模式：
+    // 它隐含 moduleResolution: bundler 与 esModuleInterop，正好对应 bun build
+    "module": "preserve",
+
+    // engines.node 是 >=18.3，所以不能跟着 tsc --init 用 esnext
     "target": "es2022",
-    "moduleResolution": "node16",
+    "lib": ["ES2022"],
+    "types": ["node", "bun"],
+
+    // 只做类型检查，产物由 bun build 出
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+
+    // 以下为 TypeScript 6 的 tsc --init 默认集合
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true,
+
     "resolveJsonModule": true,
-    "strictBuiltinIteratorReturn": false /** https://github.com/isaacs/node-lru-cache/issues/348#issuecomment-2296786407 */
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"],
-  "ts-node": {
-    "esm": true
-  }
+  "include": ["src/**/*", "test/**/*", "eslint.config.js"]
 }

@@ -6,13 +6,13 @@
 
 version: 2
 updates:
-  - package-ecosystem: "github-actions" 
-    directory: "/" 
+  - package-ecosystem: 'github-actions'
+    directory: '/'
     schedule:
-      interval: "daily"
+      interval: 'daily'
 
-  - package-ecosystem: "npm"
+  - package-ecosystem: 'npm'
     versioning-strategy: increase
-    directory: "/"
+    directory: '/'
     schedule:
-      interval: "daily"
+      interval: 'daily'

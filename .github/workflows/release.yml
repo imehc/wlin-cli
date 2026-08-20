@@ -5,7 +5,8 @@ on:
     branches: [main]
 
 permissions:
-  contents: read
+  # changelog 步骤要把生成的 CHANGELOG.md 提交回 main
+  contents: write
   id-token: write
 
 jobs:
@@ -17,6 +18,8 @@ jobs:
         uses: actions/checkout@v7
         with:
           persist-credentials: false
+          # conventional-changelog 要按 tag 分组，需要完整历史和 tag
+          fetch-depth: 0
 
       - name: Check if version has been updated
         id: check
@@ -28,61 +31,88 @@ jobs:
       - name: Log when changed
         if: steps.check.outputs.changed == 'true'
         run: 'echo "Version change found in commit ${{ steps.check.outputs.commit }}! New version: ${{ steps.check.outputs.version }} (${{ steps.check.outputs.type }})"'
-        
+
       - name: Log when unchanged
         if: steps.check.outputs.changed == 'false'
         run: 'echo "No version change :/"'
 
-      - uses: pnpm/action-setup@v6.0.10
+      # 依赖安装与构建都由 bun 执行
+      - name: Set up bun
         if: steps.check.outputs.changed == 'true'
+        uses: oven-sh/setup-bun@v2
         with:
-          version: 9 
+          bun-version: latest
 
-      # 指定node版本
+      # npm publish --provenance 仍由 npm 执行，故需要 node
       - name: Set node version
         if: steps.check.outputs.changed == 'true'
         uses: actions/setup-node@v7
         with:
           node-version: '22'
-          cache: 'pnpm'
-          cache-dependency-path: 'pnpm-lock.yaml'
-
-      - name: Cache pnpm dependencies
+          registry-url: 'https://registry.npmjs.org'
+      - name: Cache bun dependencies
         if: steps.check.outputs.changed == 'true'
         uses: actions/cache@v6
         with:
           path: |
-            ~/.pnpm-store
+            ~/.bun/install/cache
           key: |
-            ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+            ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-
+            ${{ runner.os }}-bun-
 
       - name: Upgrade npm for Trusted Publishing
         if: steps.check.outputs.changed == 'true'
         run: npm install -g npm@latest
 
-      # 安装依赖，包括我们的 semantic-release 全套
       - name: Install dependencies
         if: steps.check.outputs.changed == 'true'
         run: |
-          pnpm install
-      
-      # 打包你的插件/组件/库等等等
+          bun install --frozen-lockfile
+
+      # 打包为单文件产物 dist/cli.js
       - name: Build
         if: steps.check.outputs.changed == 'true'
         run: |
-          pnpm run build
+          bun run build
 
+      # 发布前最后一道闸：确认 tarball 里没有开发期字段/文件。
+      # 这一步是 npm pack 的一次演练，同时验证 prepack 精简 + postpack 还原都正常
+      - name: Verify the publish tarball
+        if: steps.check.outputs.changed == 'true'
+        run: node scripts/verify-tarball.js
+
+      # prepack 会再次 build 并精简 package.json，postpack 负责还原
       - name: Publish to npm
         if: steps.check.outputs.changed == 'true'
         run: npm publish --provenance --access public
 
-      # # 执行 semantic-release 发布包
-      # - name: Release
-      #   if: steps.check.outputs.changed == 'true'
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      #   # run: npx semantic-release
+      # 兜底：npm publish 中途失败时 postpack 可能没跑，工作区会留下精简版
+      # package.json。后面的 changelog 步骤只 `git add CHANGELOG.md`，所以不会把它
+      # 提交上去，但显式还原能让失败后的重跑从干净状态开始
+      - name: Restore package.json if postpack did not run
+        if: always() && steps.check.outputs.changed == 'true'
+        run: node scripts/pack-json.js restore
 
+      # 发布成功后才生成 changelog：发布失败时不该留下 changelog 提交。
+      # -r 0 按全部 tag 重新生成整个文件，因此重跑 workflow 不会追加重复段落。
+      - name: Generate CHANGELOG.md
+        if: steps.check.outputs.changed == 'true'
+        run: bunx conventional-changelog -p angular -i CHANGELOG.md -s -r 0
+
+      # [skip ci] 让这次回推不再触发本 workflow
+      - name: Commit CHANGELOG.md
+        if: steps.check.outputs.changed == 'true'
+        env:
+          VERSION: ${{ steps.check.outputs.version }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet -- CHANGELOG.md; then
+            echo "CHANGELOG.md 无变化，跳过提交"
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add CHANGELOG.md
+          git commit -m "docs: update changelog for v${VERSION} [skip ci]"
+          git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:${GITHUB_REF_NAME}"

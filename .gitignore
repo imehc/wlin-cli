@@ -2,14 +2,17 @@
 *-debug.log
 *-error.log
 /.idea
-/.nyc_output
 /dist
-/lib
-/package-lock.json
 /tmp
-/yarn.lock
 node_modules
-oclif.lock
-oclif.manifest.json
 
 *.tsbuildinfo
+
+# 只用 bun.lock，其他包管理器的 lockfile 不入库
+/package-lock.json
+/pnpm-lock.yaml
+/yarn.lock
+
+# prepack 精简 package.json 时的备份，postpack 会删掉
+/.package.json.bak
+/*.tgz

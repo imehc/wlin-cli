@@ -1,0 +1,11 @@
+# bun 的 lockfile 是自己格式化的，prettier 会把它改坏
+bun.lock
+
+# CI 生成，不该被本地格式化影响
+CHANGELOG.md
+
+# 个人本地配置，不入库
+.claude/
+
+dist
+node_modules

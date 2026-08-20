@@ -1,6 +1,6 @@
-#!/usr/bin/env -S node --loader ts-node/esm --disable-warning=ExperimentalWarning
+#!/usr/bin/env bun
 
-// eslint-disable-next-line n/shebang
-import {execute} from '@oclif/core'
+// 开发入口：bun 直接执行 TypeScript，不需要 ts-node/register 那套 loader
+import {run} from '../src/cli.ts'
 
-await execute({development: true, dir: import.meta.url})
+await run()
