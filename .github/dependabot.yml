@@ -11,8 +11,7 @@ updates:
     schedule:
       interval: 'daily'
 
-  - package-ecosystem: 'npm'
-    versioning-strategy: increase
+  - package-ecosystem: 'bun'
     directory: '/'
     schedule:
       interval: 'daily'
